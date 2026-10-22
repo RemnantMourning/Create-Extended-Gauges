@@ -1,0 +1,546 @@
+﻿Compiled from "ComparatorPanelBehaviour.java"
+public class net.liukrast.eg.content.logistics.board.ComparatorPanelBehaviour extends net.liukrast.eg.content.logistics.board.NumericalScrollPanelBehaviour implements net.liukrast.eg.api.util.CacheContainer<java.lang.Integer> {
+  int comparatorMode;
+
+  private int updated;
+
+  private final java.util.Map<net.minecraft.core.BlockPos, java.lang.Integer> cache;
+
+  public net.liukrast.eg.content.logistics.board.ComparatorPanelBehaviour(net.liukrast.eg.api.registry.PanelType<?>, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlockEntity, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlock$PanelSlot);
+    Code:
+       0: aload_0
+       1: ldc           #53                 // String create.logistics.comparator_value
+       3: invokestatic  #59                 // InterfaceMethod net/minecraft/network/chat/Component.m_237115_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       6: aload_1
+       7: aload_2
+       8: aload_3
+       9: invokespecial #62                 // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour."<init>":(Lnet/minecraft/network/chat/Component;Lnet/liukrast/eg/api/registry/PanelType;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlockEntity;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;)V
+      12: aload_0
+      13: iconst_0
+      14: putfield      #64                 // Field comparatorMode:I
+      17: aload_0
+      18: iconst_0
+      19: putfield      #66                 // Field updated:I
+      22: aload_0
+      23: new           #68                 // class java/util/HashMap
+      26: dup
+      27: invokespecial #71                 // Method java/util/HashMap."<init>":()V
+      30: putfield      #73                 // Field cache:Ljava/util/Map;
+      33: aload_0
+      34: sipush        -256
+      37: sipush        256
+      40: invokevirtual #77                 // Method between:(II)V
+      43: return
+
+  public java.util.Map<net.minecraft.core.BlockPos, java.lang.Integer> cacheMap();
+    Code:
+       0: aload_0
+       1: getfield      #73                 // Field cache:Ljava/util/Map;
+       4: areturn
+
+  public com.mojang.serialization.Codec<java.lang.Integer> cacheCodec();
+    Code:
+       0: getstatic     #98                 // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+       3: areturn
+
+  public com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsBoard createBoard(net.minecraft.world.entity.player.Player, net.minecraft.world.phys.BlockHitResult);
+    Code:
+       0: ldc           #102                // String Positive
+       2: invokestatic  #105                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       5: getstatic     #111                // Field net/minecraft/ChatFormatting.BOLD:Lnet/minecraft/ChatFormatting;
+       8: invokevirtual #117                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      11: ldc           #119                // String Negative
+      13: invokestatic  #105                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      16: getstatic     #111                // Field net/minecraft/ChatFormatting.BOLD:Lnet/minecraft/ChatFormatting;
+      19: invokevirtual #117                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      22: invokestatic  #125                // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      25: astore_3
+      26: new           #127                // class com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsFormatter
+      29: dup
+      30: aload_0
+      31: invokedynamic #146,  0            // InvokeDynamic #0:apply:(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;)Ljava/util/function/Function;
+      36: invokespecial #149                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsFormatter."<init>":(Ljava/util/function/Function;)V
+      39: astore        4
+      41: new           #151                // class com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBoard
+      44: dup
+      45: aload_0
+      46: getfield      #155                // Field label:Lnet/minecraft/network/chat/Component;
+      49: sipush        256
+      52: bipush        32
+      54: aload_3
+      55: aload         4
+      57: invokespecial #158                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBoard."<init>":(Lnet/minecraft/network/chat/Component;IILjava/util/List;Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsFormatter;)V
+      60: areturn
+
+  public void setValueSettings(net.minecraft.world.entity.player.Player, com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsBehaviour$ValueSettings, boolean);
+    Code:
+       0: aload_2
+       1: invokevirtual #173                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings.row:()I
+       4: iconst_2
+       5: if_icmpne     33
+       8: aload_0
+       9: aload_2
+      10: invokevirtual #176                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings.value:()I
+      13: iconst_0
+      14: invokestatic  #182                // Method net/liukrast/eg/content/logistics/board/ComparatorMode.values:()[Lnet/liukrast/eg/content/logistics/board/ComparatorMode;
+      17: arraylength
+      18: iconst_1
+      19: isub
+      20: invokestatic  #188                // Method net/minecraft/util/Mth.m_14045_:(III)I
+      23: putfield      #64                 // Field comparatorMode:I
+      26: aload_0
+      27: invokevirtual #191                // Method checkForRedstoneInput:()V
+      30: goto          74
+      33: aload_2
+      34: invokevirtual #176                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings.value:()I
+      37: istore        4
+      39: aload_2
+      40: aload_0
+      41: invokevirtual #195                // Method getValueSettings:()Lcom/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings;
+      44: invokevirtual #199                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings.equals:(Ljava/lang/Object;)Z
+      47: ifne          55
+      50: aload_0
+      51: aload_0
+      52: invokevirtual #203                // Method playFeedbackSound:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)V
+      55: aload_0
+      56: aload_2
+      57: invokevirtual #173                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueSettingsBehaviour$ValueSettings.row:()I
+      60: ifne          68
+      63: iload         4
+      65: goto          71
+      68: iload         4
+      70: ineg
+      71: invokevirtual #209                // Method setValue:(I)V
+      74: return
+
+  public void addConnections(net.liukrast.eg.api.logistics.board.AbstractPanelBehaviour$PanelConnectionBuilder);
+    Code:
+       0: aload_1
+       1: getstatic     #221                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+       4: aload_0
+       5: invokedynamic #233,  0            // InvokeDynamic #1:get:(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;)Ljava/util/function/Supplier;
+      10: invokevirtual #237                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour$PanelConnectionBuilder.put:(Lnet/minecraftforge/registries/RegistryObject;Ljava/util/function/Supplier;)Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour$PanelConnectionBuilder;
+      13: pop
+      14: aload_1
+      15: getstatic     #240                // Field net/liukrast/eg/registry/EGPanelConnections.STRING:Lnet/minecraftforge/registries/RegistryObject;
+      18: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      21: checkcast     #246                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      24: aload_0
+      25: invokedynamic #253,  0            // InvokeDynamic #2:get:(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;)Ljava/util/function/Supplier;
+      30: invokevirtual #256                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour$PanelConnectionBuilder.put:(Lnet/liukrast/eg/api/logistics/board/PanelConnection;Ljava/util/function/Supplier;)Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour$PanelConnectionBuilder;
+      33: pop
+      34: return
+
+  public void easyWrite(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #262                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.easyWrite:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: aload_1
+       7: ldc_w         #264                // String ComparatorMode
+      10: aload_0
+      11: getfield      #64                 // Field comparatorMode:I
+      14: invokevirtual #270                // Method net/minecraft/nbt/CompoundTag.m_128405_:(Ljava/lang/String;I)V
+      17: return
+
+  public void easyRead(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #276                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.easyRead:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: aload_0
+       7: aload_1
+       8: ldc_w         #264                // String ComparatorMode
+      11: invokevirtual #280                // Method net/minecraft/nbt/CompoundTag.m_128451_:(Ljava/lang/String;)I
+      14: putfield      #64                 // Field comparatorMode:I
+      17: return
+
+  public net.minecraft.world.item.Item getItem();
+    Code:
+       0: getstatic     #287                // Field net/liukrast/eg/registry/EGItems.COMPARATOR_GAUGE:Lnet/minecraftforge/registries/RegistryObject;
+       3: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+       6: checkcast     #289                // class net/minecraft/world/item/Item
+       9: areturn
+
+  public dev.engine_room.flywheel.lib.model.baked.PartialModel getModel(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlock$PanelState, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlock$PanelType);
+    Code:
+       0: getstatic     #297                // Field net/liukrast/eg/registry/EGPartialModels.COMPARATOR_PANEL:Ldev/engine_room/flywheel/lib/model/baked/PartialModel;
+       3: areturn
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokespecial #304                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.tick:()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #66                 // Field updated:I
+       9: return
+
+  public boolean shouldRenderBulb(boolean);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public void checkForRedstoneInput();
+    Code:
+       0: aload_0
+       1: getfield      #310                // Field active:Z
+       4: ifeq          26
+       7: aload_0
+       8: getfield      #66                 // Field updated:I
+      11: getstatic     #316                // Field net/liukrast/eg/ExtraGaugesConfig.COMPARATOR_MAX_CHAIN:Lnet/minecraftforge/common/ForgeConfigSpec$IntValue;
+      14: invokevirtual #317                // Method net/minecraftforge/common/ForgeConfigSpec$IntValue.get:()Ljava/lang/Object;
+      17: checkcast     #319                // class java/lang/Integer
+      20: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+      23: if_icmple     27
+      26: return
+      27: new           #324                // class java/util/concurrent/atomic/AtomicInteger
+      30: dup
+      31: invokespecial #325                // Method java/util/concurrent/atomic/AtomicInteger."<init>":()V
+      34: astore_1
+      35: aload_0
+      36: aload_1
+      37: invokedynamic #338,  0            // InvokeDynamic #3:accept:(Ljava/util/concurrent/atomic/AtomicInteger;)Ljava/util/function/Consumer;
+      42: invokevirtual #342                // Method consumeForLinks:(Ljava/util/function/Consumer;)V
+      45: aload_0
+      46: getstatic     #345                // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+      49: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      52: checkcast     #246                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      55: aload_1
+      56: dup
+      57: invokestatic  #350                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      60: pop
+      61: invokedynamic #358,  0            // InvokeDynamic #4:accept:(Ljava/util/concurrent/atomic/AtomicInteger;)Ljava/util/function/Consumer;
+      66: invokevirtual #362                // Method consumeForPanels:(Lnet/liukrast/eg/api/logistics/board/PanelConnection;Ljava/util/function/Consumer;)V
+      69: aload_0
+      70: getstatic     #345                // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+      73: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      76: checkcast     #246                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      79: aload_0
+      80: aload_1
+      81: invokedynamic #374,  0            // InvokeDynamic #5:accept:(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;Ljava/util/concurrent/atomic/AtomicInteger;)Ljava/util/function/BiConsumer;
+      86: invokevirtual #378                // Method consumeForExtra:(Lnet/liukrast/eg/api/logistics/board/PanelConnection;Ljava/util/function/BiConsumer;)V
+      89: aload_0
+      90: aload_0
+      91: invokevirtual #382                // Method sendCache:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)V
+      94: ldc           #178                // class net/liukrast/eg/content/logistics/board/ComparatorMode
+      96: invokevirtual #388                // Method java/lang/Class.getEnumConstants:()[Ljava/lang/Object;
+      99: checkcast     #390                // class "[Lnet/liukrast/eg/content/logistics/board/ComparatorMode;"
+     102: aload_0
+     103: getfield      #64                 // Field comparatorMode:I
+     106: aaload
+     107: aload_1
+     108: invokevirtual #392                // Method java/util/concurrent/atomic/AtomicInteger.get:()I
+     111: aload_0
+     112: getfield      #394                // Field value:I
+     115: invokevirtual #398                // Method net/liukrast/eg/content/logistics/board/ComparatorMode.test:(II)Z
+     118: istore_2
+     119: iload_2
+     120: aload_0
+     121: getfield      #401                // Field redstonePowered:Z
+     124: if_icmpeq     128
+     127: return
+     128: aload_0
+     129: iload_2
+     130: ifne          137
+     133: iconst_1
+     134: goto          138
+     137: iconst_0
+     138: putfield      #401                // Field redstonePowered:Z
+     141: aload_0
+     142: getfield      #405                // Field blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+     145: invokevirtual #410                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.notifyUpdate:()V
+     148: aload_0
+     149: dup
+     150: getfield      #66                 // Field updated:I
+     153: iconst_1
+     154: iadd
+     155: putfield      #66                 // Field updated:I
+     158: aload_0
+     159: getfield      #414                // Field targeting:Ljava/util/Set;
+     162: invokeinterface #420,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     167: astore_3
+     168: aload_3
+     169: invokeinterface #426,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     174: ifeq          231
+     177: aload_3
+     178: invokeinterface #429,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     183: checkcast     #431                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition
+     186: astore        4
+     188: aload_0
+     189: invokevirtual #435                // Method getWorld:()Lnet/minecraft/world/level/Level;
+     192: aload         4
+     194: invokevirtual #439                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+     197: invokevirtual #445                // Method net/minecraft/world/level/Level.m_46749_:(Lnet/minecraft/core/BlockPos;)Z
+     200: ifne          204
+     203: return
+     204: aload_0
+     205: invokevirtual #435                // Method getWorld:()Lnet/minecraft/world/level/Level;
+     208: aload         4
+     210: invokestatic  #451                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.at:(Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;
+     213: astore        5
+     215: aload         5
+     217: ifnonnull     223
+     220: goto          168
+     223: aload         5
+     225: invokevirtual #452                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.checkForRedstoneInput:()V
+     228: goto          168
+     231: aload_0
+     232: invokevirtual #455                // Method notifyRedstoneOutputs:()V
+     235: return
+
+  public net.minecraft.network.chat.MutableComponent getDisplayLinkComponent(boolean);
+    Code:
+       0: aload_0
+       1: getstatic     #221                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+       4: invokevirtual #468                // Method getConnectionValue:(Lnet/minecraftforge/registries/RegistryObject;)Ljava/util/Optional;
+       7: iconst_0
+       8: invokestatic  #472                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      11: invokevirtual #477                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: checkcast     #319                // class java/lang/Integer
+      17: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+      20: ifle          27
+      23: iconst_1
+      24: goto          28
+      27: iconst_0
+      28: istore_2
+      29: ldc_w         #479                // String ?
+      32: astore_3
+      33: ldc_w         #481                // String ?
+      36: astore        4
+      38: iload_1
+      39: ifne          58
+      42: aload_3
+      43: invokedynamic #493,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      48: astore_3
+      49: aload         4
+      51: invokedynamic #496,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      56: astore        4
+      58: iload_2
+      59: ifeq          66
+      62: aload_3
+      63: goto          68
+      66: aload         4
+      68: invokestatic  #105                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      71: areturn
+
+  public void displayScreen(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: instanceof    #509                // class net/minecraft/client/player/LocalPlayer
+       4: ifeq          18
+       7: new           #511                // class net/liukrast/eg/content/logistics/board/ComparatorPanelScreen
+      10: dup
+      11: aload_0
+      12: invokespecial #514                // Method net/liukrast/eg/content/logistics/board/ComparatorPanelScreen."<init>":(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;)V
+      15: invokestatic  #520                // Method net/createmod/catnip/gui/ScreenOpener.open:(Lnet/minecraft/client/gui/screens/Screen;)V
+      18: return
+
+  public int calculatePath(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, int);
+    Code:
+       0: aload_1
+       1: getstatic     #345                // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+       4: invokestatic  #525                // Method net/liukrast/eg/registry/EGPanelConnections.getConnectionValue:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;Lnet/minecraftforge/registries/RegistryObject;)Ljava/util/Optional;
+       7: invokevirtual #528                // Method java/util/Optional.isPresent:()Z
+      10: ifeq          17
+      13: sipush        25750
+      16: ireturn
+      17: aload_0
+      18: aload_1
+      19: iload_2
+      20: invokespecial #530                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.calculatePath:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;I)I
+      23: ireturn
+
+  public int calculateExtraPath(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #435                // Method getWorld:()Lnet/minecraft/world/level/Level;
+       4: astore_2
+       5: aload_2
+       6: aload_1
+       7: invokevirtual #537                // Method net/minecraft/world/level/Level.m_8055_:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      10: astore_3
+      11: aload_2
+      12: aload_1
+      13: invokevirtual #541                // Method net/minecraft/world/level/Level.m_7702_:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      16: astore        4
+      18: getstatic     #345                // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+      21: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      24: checkcast     #246                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      27: aload_3
+      28: invokevirtual #547                // Method net/minecraft/world/level/block/state/BlockState.m_60734_:()Lnet/minecraft/world/level/block/Block;
+      31: invokevirtual #551                // Method net/liukrast/eg/api/logistics/board/PanelConnection.getListener:(Lnet/minecraft/world/level/block/Block;)Lnet/liukrast/eg/api/util/ConnectionExtra;
+      34: astore        5
+      36: aload         5
+      38: ifnull        119
+      41: aload         5
+      43: aload_2
+      44: aload_3
+      45: aload_1
+      46: aload         4
+      48: invokeinterface #557,  5          // InterfaceMethod net/liukrast/eg/api/util/ConnectionExtra.invalidate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;)Ljava/util/Optional;
+      53: astore        6
+      55: aload_0
+      56: getfield      #73                 // Field cache:Ljava/util/Map;
+      59: aload_1
+      60: invokeinterface #561,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      65: checkcast     #319                // class java/lang/Integer
+      68: astore        7
+      70: aload         6
+      72: invokevirtual #528                // Method java/util/Optional.isPresent:()Z
+      75: ifeq          119
+      78: getstatic     #565                // Field net/liukrast/eg/ExtraGaugesConfig.PANEL_CACHING:Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+      81: invokevirtual #566                // Method net/minecraftforge/common/ForgeConfigSpec$BooleanValue.get:()Ljava/lang/Object;
+      84: checkcast     #568                // class java/lang/Boolean
+      87: invokevirtual #571                // Method java/lang/Boolean.booleanValue:()Z
+      90: ifeq          109
+      93: aload         6
+      95: invokevirtual #572                // Method java/util/Optional.get:()Ljava/lang/Object;
+      98: checkcast     #319                // class java/lang/Integer
+     101: aload         7
+     103: invokevirtual #573                // Method java/lang/Integer.equals:(Ljava/lang/Object;)Z
+     106: ifeq          115
+     109: sipush        25750
+     112: goto          118
+     115: ldc_w         #578                // int 16766273
+     118: ireturn
+     119: getstatic     #221                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+     122: invokevirtual #244                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     125: checkcast     #246                // class net/liukrast/eg/api/logistics/board/PanelConnection
+     128: aload_3
+     129: invokevirtual #547                // Method net/minecraft/world/level/block/state/BlockState.m_60734_:()Lnet/minecraft/world/level/block/Block;
+     132: invokevirtual #551                // Method net/liukrast/eg/api/logistics/board/PanelConnection.getListener:(Lnet/minecraft/world/level/block/Block;)Lnet/liukrast/eg/api/util/ConnectionExtra;
+     135: astore        6
+     137: aload         6
+     139: ifnonnull     148
+     142: aload_0
+     143: aload_1
+     144: invokespecial #580                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.calculateExtraPath:(Lnet/minecraft/core/BlockPos;)I
+     147: ireturn
+     148: aload         6
+     150: aload_2
+     151: aload_3
+     152: aload_1
+     153: aload         4
+     155: invokeinterface #557,  5          // InterfaceMethod net/liukrast/eg/api/util/ConnectionExtra.invalidate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;)Ljava/util/Optional;
+     160: aload_0
+     161: aload_1
+     162: invokedynamic #590,  0            // InvokeDynamic #8:apply:(Lnet/liukrast/eg/content/logistics/board/ComparatorPanelBehaviour;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Function;
+     167: invokevirtual #594                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+     170: aload_0
+     171: aload_1
+     172: invokespecial #580                // Method net/liukrast/eg/content/logistics/board/NumericalScrollPanelBehaviour.calculateExtraPath:(Lnet/minecraft/core/BlockPos;)I
+     175: invokestatic  #472                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     178: invokevirtual #477                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     181: checkcast     #319                // class java/lang/Integer
+     184: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+     187: ireturn
+
+  private java.lang.Integer lambda$calculateExtraPath$4(net.minecraft.core.BlockPos, java.lang.Integer);
+    Code:
+       0: aload_2
+       1: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: istore_3
+      13: aload_0
+      14: getfield      #73                 // Field cache:Ljava/util/Map;
+      17: aload_1
+      18: invokeinterface #561,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #319                // class java/lang/Integer
+      26: astore        4
+      28: getstatic     #565                // Field net/liukrast/eg/ExtraGaugesConfig.PANEL_CACHING:Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+      31: invokevirtual #566                // Method net/minecraftforge/common/ForgeConfigSpec$BooleanValue.get:()Ljava/lang/Object;
+      34: checkcast     #568                // class java/lang/Boolean
+      37: invokevirtual #571                // Method java/lang/Boolean.booleanValue:()Z
+      40: ifeq          72
+      43: aload         4
+      45: ifnull        72
+      48: iload_3
+      49: aload         4
+      51: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+      54: ifle          61
+      57: iconst_1
+      58: goto          62
+      61: iconst_0
+      62: if_icmpne     72
+      65: ldc_w         #578                // int 16766273
+      68: invokestatic  #472                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      71: areturn
+      72: iload_3
+      73: ifeq          82
+      76: ldc_w         #609                // int 5767425
+      79: goto          85
+      82: ldc_w         #610                // int 15663104
+      85: invokestatic  #472                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      88: areturn
+
+  private void lambda$checkForRedstoneInput$3(java.util.concurrent.atomic.AtomicInteger, net.minecraft.core.BlockPos, java.lang.Integer);
+    Code:
+       0: aload_1
+       1: aload_3
+       2: invokevirtual #322                // Method java/lang/Integer.intValue:()I
+       5: invokevirtual #354                // Method java/util/concurrent/atomic/AtomicInteger.addAndGet:(I)I
+       8: pop
+       9: aload_0
+      10: getfield      #73                 // Field cache:Ljava/util/Map;
+      13: aload_2
+      14: aload_3
+      15: invokeinterface #615,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      20: pop
+      21: return
+
+  private static void lambda$checkForRedstoneInput$2(java.util.concurrent.atomic.AtomicInteger, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSupportBehaviour);
+    Code:
+       0: aload_1
+       1: invokevirtual #620                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.shouldPanelBePowered:()Z
+       4: ifeq          36
+       7: aload_1
+       8: getfield      #621                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      11: astore_3
+      12: aload_3
+      13: instanceof    #623                // class com/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity
+      16: ifeq          36
+      19: aload_3
+      20: checkcast     #623                // class com/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity
+      23: astore_2
+      24: aload_0
+      25: aload_2
+      26: invokevirtual #626                // Method com/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity.getReceivedSignal:()I
+      29: invokevirtual #354                // Method java/util/concurrent/atomic/AtomicInteger.addAndGet:(I)I
+      32: pop
+      33: goto          53
+      36: aload_0
+      37: aload_1
+      38: invokevirtual #620                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.shouldPanelBePowered:()Z
+      41: ifeq          48
+      44: iconst_1
+      45: goto          49
+      48: iconst_0
+      49: invokevirtual #354                // Method java/util/concurrent/atomic/AtomicInteger.addAndGet:(I)I
+      52: pop
+      53: return
+
+  private java.lang.String lambda$addConnections$1();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokevirtual #633                // Method getDisplayLinkComponent:(Z)Lnet/minecraft/network/chat/MutableComponent;
+       5: invokevirtual #636                // Method net/minecraft/network/chat/MutableComponent.getString:()Ljava/lang/String;
+       8: areturn
+
+  private java.lang.Integer lambda$addConnections$0();
+    Code:
+       0: aload_0
+       1: getfield      #401                // Field redstonePowered:Z
+       4: ifne          12
+       7: bipush        15
+       9: goto          13
+      12: iconst_0
+      13: invokestatic  #472                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      16: areturn
+}

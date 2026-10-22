@@ -1,0 +1,206 @@
+﻿Compiled from "FactoryPanelRendererMixin.java"
+public class net.liukrast.eg.mixin.FactoryPanelRendererMixin {
+  public net.liukrast.eg.mixin.FactoryPanelRendererMixin();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  private int renderSafe(int, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, float, com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.MultiBufferSource, int, int);
+    Code:
+       0: aload_2
+       1: instanceof    #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+       4: ifeq          73
+       7: aload_2
+       8: checkcast     #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+      11: astore        8
+      13: aload         4
+      15: invokevirtual #42                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85836_:()V
+      18: getstatic     #48                 // Field net/minecraftforge/common/MinecraftForge.EVENT_BUS:Lnet/minecraftforge/eventbus/api/IEventBus;
+      21: new           #50                 // class net/liukrast/eg/api/event/AbstractPanelRenderEvent
+      24: dup
+      25: aload         8
+      27: fload_3
+      28: aload         4
+      30: aload         5
+      32: iload         6
+      34: iload         7
+      36: invokespecial #53                 // Method net/liukrast/eg/api/event/AbstractPanelRenderEvent."<init>":(Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V
+      39: invokeinterface #59,  2           // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.post:(Lnet/minecraftforge/eventbus/api/Event;)Z
+      44: pop
+      45: aload         4
+      47: invokevirtual #62                 // Method com/mojang/blaze3d/vertex/PoseStack.m_85849_:()V
+      50: aload         8
+      52: iload_1
+      53: ifle          60
+      56: iconst_1
+      57: goto          61
+      60: iconst_0
+      61: invokevirtual #70                 // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.shouldRenderBulb:(Z)Z
+      64: ifeq          71
+      67: iconst_1
+      68: goto          72
+      71: iconst_0
+      72: ireturn
+      73: iload_1
+      74: ireturn
+
+  private void renderSafe(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlockEntity, float, com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.MultiBufferSource, int, int, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: aload         8
+       2: checkcast     #89                 // class net/liukrast/eg/api/util/IFPExtra
+       5: invokeinterface #93,  1           // InterfaceMethod net/liukrast/eg/api/util/IFPExtra.extra_gauges$getExtra:()Ljava/util/Map;
+      10: invokeinterface #99,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      15: invokeinterface #105,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      20: astore        9
+      22: aload         9
+      24: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      29: ifeq          62
+      32: aload         9
+      34: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #117                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection
+      42: astore        10
+      44: aload         8
+      46: aload         10
+      48: fload_2
+      49: aload_3
+      50: aload         4
+      52: iload         5
+      54: iload         6
+      56: invokestatic  #123                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelRenderer.renderPath:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V
+      59: goto          22
+      62: return
+
+  private static int renderPath(int, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelConnection, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSupportBehaviour, boolean, com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef);
+    Code:
+       0: iload         4
+       2: ifeq          68
+       5: aload_1
+       6: instanceof    #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+       9: ifeq          68
+      12: aload_1
+      13: checkcast     #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+      16: astore        6
+      18: aload         6
+      20: getstatic     #139                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+      23: invokevirtual #144                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      26: checkcast     #146                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      29: invokevirtual #150                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.getConnectionValue:(Lnet/liukrast/eg/api/logistics/board/PanelConnection;)Ljava/util/Optional;
+      32: astore        7
+      34: aload         7
+      36: invokevirtual #155                // Method java/util/Optional.isPresent:()Z
+      39: ifeq          68
+      42: aload         7
+      44: iconst_0
+      45: invokestatic  #161                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      48: invokevirtual #165                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      51: checkcast     #157                // class java/lang/Integer
+      54: invokevirtual #169                // Method java/lang/Integer.intValue:()I
+      57: ifne          65
+      60: ldc           #170                // int 5767425
+      62: goto          67
+      65: ldc           #171                // int 15663104
+      67: ireturn
+      68: aload_3
+      69: instanceof    #14                 // class net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour
+      72: ifeq          107
+      75: aload_3
+      76: checkcast     #14                 // class net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour
+      79: astore        6
+      81: aload         6
+      83: aload_1
+      84: invokevirtual #175                // Method net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour.getColor:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)Lnet/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line;
+      87: astore        7
+      89: aload         5
+      91: aload         7
+      93: invokevirtual #178                // Method net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line.dots:()Z
+      96: invokeinterface #184,  2          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalBooleanRef.set:(Z)V
+     101: aload         7
+     103: invokevirtual #187                // Method net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line.color:()I
+     106: ireturn
+     107: aload_3
+     108: ifnull        113
+     111: iload_0
+     112: ireturn
+     113: aload_1
+     114: invokevirtual #191                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getWorld:()Lnet/minecraft/world/level/Level;
+     117: aload_2
+     118: invokestatic  #194                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.at:(Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;
+     121: astore        6
+     123: aload_1
+     124: instanceof    #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+     127: ifeq          165
+     130: aload_1
+     131: checkcast     #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+     134: astore        7
+     136: aload         6
+     138: ifnull        152
+     141: aload         7
+     143: aload         6
+     145: iload_0
+     146: invokevirtual #198                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.calculatePath:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;I)I
+     149: goto          164
+     152: aload         7
+     154: aload_2
+     155: getfield      #202                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection.from:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     158: invokevirtual #208                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+     161: invokevirtual #212                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.calculateExtraPath:(Lnet/minecraft/core/BlockPos;)I
+     164: ireturn
+     165: aload         6
+     167: instanceof    #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+     170: ifeq          304
+     173: aload         6
+     175: checkcast     #37                 // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+     178: astore        8
+     180: aload         8
+     182: invokevirtual #216                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.getConnections:()Ljava/util/Set;
+     185: invokeinterface #219,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     190: astore        9
+     192: aload         9
+     194: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     199: ifeq          301
+     202: aload         9
+     204: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     209: checkcast     #146                // class net/liukrast/eg/api/logistics/board/PanelConnection
+     212: astore        10
+     214: aload         10
+     216: getstatic     #222                // Field net/liukrast/eg/registry/EGPanelConnections.FILTER:Lnet/minecraftforge/registries/RegistryObject;
+     219: invokevirtual #144                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     222: if_acmpne     227
+     225: iload_0
+     226: ireturn
+     227: aload         10
+     229: getstatic     #225                // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+     232: invokevirtual #144                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     235: if_acmpne     242
+     238: sipush        25750
+     241: ireturn
+     242: aload         10
+     244: getstatic     #139                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+     247: invokevirtual #144                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     250: if_acmpne     285
+     253: aload         8
+     255: getstatic     #139                // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+     258: invokestatic  #228                // Method net/liukrast/eg/registry/EGPanelConnections.getConnectionValue:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;Lnet/minecraftforge/registries/RegistryObject;)Ljava/util/Optional;
+     261: iconst_0
+     262: invokestatic  #161                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     265: invokevirtual #165                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     268: checkcast     #157                // class java/lang/Integer
+     271: invokevirtual #169                // Method java/lang/Integer.intValue:()I
+     274: ifne          282
+     277: ldc           #170                // int 5767425
+     279: goto          284
+     282: ldc           #171                // int 15663104
+     284: ireturn
+     285: aload         10
+     287: getstatic     #231                // Field net/liukrast/eg/registry/EGPanelConnections.STRING:Lnet/minecraftforge/registries/RegistryObject;
+     290: invokevirtual #144                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     293: if_acmpne     298
+     296: iconst_m1
+     297: ireturn
+     298: goto          192
+     301: ldc           #232                // int 8947864
+     303: ireturn
+     304: iload_0
+     305: ireturn
+}

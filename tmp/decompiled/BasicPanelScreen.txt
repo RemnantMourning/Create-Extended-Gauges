@@ -1,0 +1,691 @@
+﻿Compiled from "BasicPanelScreen.java"
+public class net.liukrast.eg.api.logistics.board.BasicPanelScreen<T extends net.liukrast.eg.api.logistics.board.AbstractPanelBehaviour> extends net.createmod.catnip.gui.AbstractSimiScreen {
+  public static final net.minecraft.resources.ResourceLocation TEXTURE;
+
+  public final T behaviour;
+
+  private boolean sendReset;
+
+  static final boolean $assertionsDisabled;
+
+  public net.liukrast.eg.api.logistics.board.BasicPanelScreen(T);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #33                 // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.m_5446_:()Lnet/minecraft/network/chat/Component;
+       5: aload_1
+       6: invokespecial #36                 // Method "<init>":(Lnet/minecraft/network/chat/Component;Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;)V
+       9: return
+
+  public net.liukrast.eg.api.logistics.board.BasicPanelScreen(net.minecraft.network.chat.Component, T);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #43                 // Method net/createmod/catnip/gui/AbstractSimiScreen."<init>":(Lnet/minecraft/network/chat/Component;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #45                 // Field behaviour:Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;
+      10: return
+
+  public int getWindowWidth();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public int getWindowHeight();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  protected void m_7856_();
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokevirtual #54                 // Method getWindowWidth:()I
+       5: bipush        106
+       7: iadd
+       8: aload_0
+       9: invokevirtual #56                 // Method getWindowHeight:()I
+      12: bipush        46
+      14: iadd
+      15: invokevirtual #60                 // Method setWindowSize:(II)V
+      18: aload_0
+      19: getfield      #64                 // Field windowWidth:I
+      22: istore_1
+      23: aload_0
+      24: getfield      #67                 // Field windowHeight:I
+      27: istore_2
+      28: aload_0
+      29: invokespecial #69                 // Method net/createmod/catnip/gui/AbstractSimiScreen.m_7856_:()V
+      32: aload_0
+      33: invokevirtual #72                 // Method m_169413_:()V
+      36: aload_0
+      37: getfield      #75                 // Field guiLeft:I
+      40: istore_3
+      41: aload_0
+      42: getfield      #78                 // Field guiTop:I
+      45: istore        4
+      47: getstatic     #80                 // Field $assertionsDisabled:Z
+      50: ifne          68
+      53: aload_0
+      54: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+      57: ifnonnull     68
+      60: new           #86                 // class java/lang/AssertionError
+      63: dup
+      64: invokespecial #88                 // Method java/lang/AssertionError."<init>":()V
+      67: athrow
+      68: new           #90                 // class com/simibubi/create/foundation/gui/widget/IconButton
+      71: dup
+      72: iload_3
+      73: iload_1
+      74: iadd
+      75: bipush        25
+      77: isub
+      78: iload         4
+      80: iload_2
+      81: iadd
+      82: bipush        24
+      84: isub
+      85: getstatic     #96                 // Field com/simibubi/create/foundation/gui/AllIcons.I_CONFIRM:Lcom/simibubi/create/foundation/gui/AllIcons;
+      88: invokespecial #99                 // Method com/simibubi/create/foundation/gui/widget/IconButton."<init>":(IILnet/createmod/catnip/gui/element/ScreenElement;)V
+      91: astore        5
+      93: aload         5
+      95: aload_0
+      96: invokedynamic #115,  0            // InvokeDynamic #0:run:(Lnet/liukrast/eg/api/logistics/board/BasicPanelScreen;)Ljava/lang/Runnable;
+     101: invokevirtual #119                // Method com/simibubi/create/foundation/gui/widget/IconButton.withCallback:(Ljava/lang/Runnable;)Lnet/createmod/catnip/gui/widget/AbstractSimiWidget;
+     104: pop
+     105: aload         5
+     107: ldc           #121                // String gui.factory_panel.save_and_close
+     109: iconst_0
+     110: anewarray     #123                // class java/lang/Object
+     113: invokestatic  #129                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     116: invokevirtual #134                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     119: invokevirtual #137                // Method com/simibubi/create/foundation/gui/widget/IconButton.setToolTip:(Lnet/minecraft/network/chat/Component;)V
+     122: aload_0
+     123: aload         5
+     125: invokevirtual #141                // Method m_142416_:(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;
+     128: pop
+     129: new           #90                 // class com/simibubi/create/foundation/gui/widget/IconButton
+     132: dup
+     133: iload_3
+     134: iload_1
+     135: iadd
+     136: bipush        47
+     138: isub
+     139: iload         4
+     141: iload_2
+     142: iadd
+     143: bipush        24
+     145: isub
+     146: getstatic     #144                // Field com/simibubi/create/foundation/gui/AllIcons.I_TRASH:Lcom/simibubi/create/foundation/gui/AllIcons;
+     149: invokespecial #99                 // Method com/simibubi/create/foundation/gui/widget/IconButton."<init>":(IILnet/createmod/catnip/gui/element/ScreenElement;)V
+     152: astore        6
+     154: aload         6
+     156: aload_0
+     157: invokedynamic #149,  0            // InvokeDynamic #1:run:(Lnet/liukrast/eg/api/logistics/board/BasicPanelScreen;)Ljava/lang/Runnable;
+     162: invokevirtual #119                // Method com/simibubi/create/foundation/gui/widget/IconButton.withCallback:(Ljava/lang/Runnable;)Lnet/createmod/catnip/gui/widget/AbstractSimiWidget;
+     165: pop
+     166: aload         6
+     168: ldc           #151                // String gui.factory_panel.reset
+     170: iconst_0
+     171: anewarray     #123                // class java/lang/Object
+     174: invokestatic  #129                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     177: invokevirtual #134                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     180: invokevirtual #137                // Method com/simibubi/create/foundation/gui/widget/IconButton.setToolTip:(Lnet/minecraft/network/chat/Component;)V
+     183: aload_0
+     184: aload         6
+     186: invokevirtual #141                // Method m_142416_:(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;
+     189: pop
+     190: new           #90                 // class com/simibubi/create/foundation/gui/widget/IconButton
+     193: dup
+     194: iload_3
+     195: bipush        7
+     197: iadd
+     198: iload         4
+     200: iload_2
+     201: iadd
+     202: bipush        24
+     204: isub
+     205: getstatic     #154                // Field com/simibubi/create/foundation/gui/AllIcons.I_ADD:Lcom/simibubi/create/foundation/gui/AllIcons;
+     208: invokespecial #99                 // Method com/simibubi/create/foundation/gui/widget/IconButton."<init>":(IILnet/createmod/catnip/gui/element/ScreenElement;)V
+     211: astore        7
+     213: aload         7
+     215: aload_0
+     216: invokedynamic #159,  0            // InvokeDynamic #2:run:(Lnet/liukrast/eg/api/logistics/board/BasicPanelScreen;)Ljava/lang/Runnable;
+     221: invokevirtual #119                // Method com/simibubi/create/foundation/gui/widget/IconButton.withCallback:(Ljava/lang/Runnable;)Lnet/createmod/catnip/gui/widget/AbstractSimiWidget;
+     224: pop
+     225: aload         7
+     227: ldc           #161                // String gui.factory_panel.connect_input
+     229: iconst_0
+     230: anewarray     #123                // class java/lang/Object
+     233: invokestatic  #129                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     236: invokevirtual #134                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     239: invokevirtual #137                // Method com/simibubi/create/foundation/gui/widget/IconButton.setToolTip:(Lnet/minecraft/network/chat/Component;)V
+     242: aload_0
+     243: aload         7
+     245: invokevirtual #141                // Method m_142416_:(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;
+     248: pop
+     249: new           #90                 // class com/simibubi/create/foundation/gui/widget/IconButton
+     252: dup
+     253: iload_3
+     254: bipush        29
+     256: iadd
+     257: iload         4
+     259: iload_2
+     260: iadd
+     261: bipush        24
+     263: isub
+     264: getstatic     #164                // Field com/simibubi/create/foundation/gui/AllIcons.I_MOVE_GAUGE:Lcom/simibubi/create/foundation/gui/AllIcons;
+     267: invokespecial #99                 // Method com/simibubi/create/foundation/gui/widget/IconButton."<init>":(IILnet/createmod/catnip/gui/element/ScreenElement;)V
+     270: astore        8
+     272: aload         8
+     274: aload_0
+     275: invokedynamic #169,  0            // InvokeDynamic #3:run:(Lnet/liukrast/eg/api/logistics/board/BasicPanelScreen;)Ljava/lang/Runnable;
+     280: invokevirtual #119                // Method com/simibubi/create/foundation/gui/widget/IconButton.withCallback:(Ljava/lang/Runnable;)Lnet/createmod/catnip/gui/widget/AbstractSimiWidget;
+     283: pop
+     284: aload         8
+     286: ldc           #171                // String gui.factory_panel.relocate
+     288: iconst_0
+     289: anewarray     #123                // class java/lang/Object
+     292: invokestatic  #129                // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     295: invokevirtual #134                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     298: invokevirtual #137                // Method com/simibubi/create/foundation/gui/widget/IconButton.setToolTip:(Lnet/minecraft/network/chat/Component;)V
+     301: aload_0
+     302: aload         8
+     304: invokevirtual #141                // Method m_142416_:(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;
+     307: pop
+     308: return
+
+  public void onConfirm();
+    Code:
+       0: getstatic     #80                 // Field $assertionsDisabled:Z
+       3: ifne          21
+       6: aload_0
+       7: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+      10: ifnonnull     21
+      13: new           #86                 // class java/lang/AssertionError
+      16: dup
+      17: invokespecial #88                 // Method java/lang/AssertionError."<init>":()V
+      20: athrow
+      21: aload_0
+      22: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+      25: aconst_null
+      26: invokevirtual #186                // Method net/minecraft/client/Minecraft.m_91152_:(Lnet/minecraft/client/gui/screens/Screen;)V
+      29: return
+
+  protected void renderWindow(net.minecraft.client.gui.GuiGraphics, int, int, float);
+    Code:
+       0: aload_0
+       1: getfield      #75                 // Field guiLeft:I
+       4: istore        5
+       6: aload_0
+       7: getfield      #78                 // Field guiTop:I
+      10: istore        6
+      12: aload_1
+      13: aload_0
+      14: getfield      #193                // Field f_96547_:Lnet/minecraft/client/gui/Font;
+      17: aload_0
+      18: getfield      #196                // Field f_96539_:Lnet/minecraft/network/chat/Component;
+      21: iload         5
+      23: aload_0
+      24: getfield      #64                 // Field windowWidth:I
+      27: iconst_2
+      28: idiv
+      29: iadd
+      30: iload         6
+      32: iconst_4
+      33: iadd
+      34: ldc           #197                // int 4013128
+      36: invokevirtual #203                // Method net/minecraft/client/gui/GuiGraphics.m_280653_:(Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;III)V
+      39: aload_1
+      40: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+      43: iload         5
+      45: iload         6
+      47: iconst_0
+      48: iconst_0
+      49: bipush        53
+      51: bipush        16
+      53: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+      56: aload_1
+      57: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+      60: iload         5
+      62: aload_0
+      63: getfield      #64                 // Field windowWidth:I
+      66: iadd
+      67: bipush        106
+      69: isub
+      70: bipush        53
+      72: iadd
+      73: iload         6
+      75: sipush        139
+      78: iconst_0
+      79: bipush        53
+      81: bipush        16
+      83: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+      86: aload_1
+      87: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+      90: iload         5
+      92: iload         6
+      94: aload_0
+      95: getfield      #67                 // Field windowHeight:I
+      98: iadd
+      99: bipush        46
+     101: isub
+     102: bipush        15
+     104: iadd
+     105: iconst_0
+     106: bipush        56
+     108: bipush        53
+     110: bipush        32
+     112: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     115: aload_1
+     116: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     119: iload         5
+     121: aload_0
+     122: getfield      #64                 // Field windowWidth:I
+     125: iadd
+     126: bipush        106
+     128: isub
+     129: bipush        53
+     131: iadd
+     132: iload         6
+     134: aload_0
+     135: getfield      #67                 // Field windowHeight:I
+     138: iadd
+     139: bipush        46
+     141: isub
+     142: bipush        15
+     144: iadd
+     145: sipush        139
+     148: bipush        56
+     150: bipush        60
+     152: bipush        32
+     154: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     157: aload_0
+     158: getfield      #64                 // Field windowWidth:I
+     161: bipush        106
+     163: if_icmple     371
+     166: aload_0
+     167: getfield      #64                 // Field windowWidth:I
+     170: bipush        106
+     172: isub
+     173: istore        7
+     175: iload         7
+     177: iconst_3
+     178: isub
+     179: istore        8
+     181: iconst_0
+     182: istore        9
+     184: iload         7
+     186: iconst_1
+     187: if_icmple     231
+     190: aload_1
+     191: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     194: iload         5
+     196: aload_0
+     197: getfield      #64                 // Field windowWidth:I
+     200: iadd
+     201: bipush        106
+     203: isub
+     204: bipush        52
+     206: iadd
+     207: iload         6
+     209: aload_0
+     210: getfield      #67                 // Field windowHeight:I
+     213: iadd
+     214: bipush        46
+     216: isub
+     217: bipush        15
+     219: iadd
+     220: sipush        138
+     223: bipush        56
+     225: iconst_1
+     226: bipush        32
+     228: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     231: aload_1
+     232: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     235: iload         5
+     237: bipush        53
+     239: iadd
+     240: iload         6
+     242: aload_0
+     243: getfield      #67                 // Field windowHeight:I
+     246: iadd
+     247: bipush        46
+     249: isub
+     250: bipush        15
+     252: iadd
+     253: bipush        53
+     255: bipush        56
+     257: iconst_2
+     258: bipush        32
+     260: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     263: iload         7
+     265: ifgt          273
+     268: iload         8
+     270: ifle          371
+     273: iload         7
+     275: ifle          310
+     278: aload_1
+     279: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     282: iload         5
+     284: bipush        53
+     286: iadd
+     287: iload         9
+     289: bipush        86
+     291: imul
+     292: iadd
+     293: iload         6
+     295: bipush        53
+     297: iconst_0
+     298: iload         7
+     300: bipush        86
+     302: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     305: bipush        16
+     307: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     310: iload         8
+     312: ifle          359
+     315: aload_1
+     316: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     319: iload         5
+     321: bipush        55
+     323: iadd
+     324: iload         9
+     326: bipush        83
+     328: imul
+     329: iadd
+     330: iload         6
+     332: aload_0
+     333: getfield      #67                 // Field windowHeight:I
+     336: iadd
+     337: bipush        46
+     339: isub
+     340: bipush        15
+     342: iadd
+     343: bipush        55
+     345: bipush        56
+     347: iload         8
+     349: bipush        83
+     351: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     354: bipush        32
+     356: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     359: iinc          9, 1
+     362: iinc          7, -86
+     365: iinc          8, -83
+     368: goto          263
+     371: aload_0
+     372: getfield      #67                 // Field windowHeight:I
+     375: bipush        47
+     377: if_icmple     700
+     380: aload_0
+     381: getfield      #67                 // Field windowHeight:I
+     384: bipush        47
+     386: isub
+     387: istore        7
+     389: iconst_0
+     390: istore        8
+     392: aload_1
+     393: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     396: iload         5
+     398: iload         6
+     400: bipush        16
+     402: iadd
+     403: iconst_0
+     404: bipush        16
+     406: bipush        53
+     408: iload         7
+     410: bipush        40
+     412: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     415: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     418: aload_1
+     419: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     422: iload         5
+     424: aload_0
+     425: getfield      #64                 // Field windowWidth:I
+     428: iadd
+     429: bipush        106
+     431: isub
+     432: bipush        53
+     434: iadd
+     435: iload         6
+     437: bipush        16
+     439: iadd
+     440: sipush        139
+     443: bipush        16
+     445: bipush        53
+     447: iload         7
+     449: bipush        40
+     451: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     454: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     457: aload_0
+     458: getfield      #64                 // Field windowWidth:I
+     461: bipush        106
+     463: if_icmple     533
+     466: aload_0
+     467: getfield      #64                 // Field windowWidth:I
+     470: bipush        106
+     472: isub
+     473: istore        9
+     475: iconst_0
+     476: istore        10
+     478: iload         9
+     480: ifle          533
+     483: aload_1
+     484: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     487: iload         5
+     489: bipush        53
+     491: iadd
+     492: iload         10
+     494: bipush        86
+     496: imul
+     497: iadd
+     498: iload         6
+     500: bipush        16
+     502: iadd
+     503: bipush        53
+     505: bipush        16
+     507: iload         9
+     509: bipush        86
+     511: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     514: iload         7
+     516: bipush        40
+     518: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     521: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     524: iinc          10, 1
+     527: iinc          9, -86
+     530: goto          478
+     533: iinc          7, -40
+     536: iload         7
+     538: ifle          700
+     541: aload_1
+     542: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     545: iload         5
+     547: iload         6
+     549: bipush        56
+     551: iadd
+     552: iload         8
+     554: bipush        36
+     556: imul
+     557: iadd
+     558: iconst_0
+     559: bipush        20
+     561: bipush        53
+     563: iload         7
+     565: bipush        36
+     567: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     570: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     573: aload_1
+     574: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     577: iload         5
+     579: aload_0
+     580: getfield      #64                 // Field windowWidth:I
+     583: iadd
+     584: bipush        106
+     586: isub
+     587: bipush        53
+     589: iadd
+     590: iload         6
+     592: bipush        56
+     594: iadd
+     595: iload         8
+     597: bipush        36
+     599: imul
+     600: iadd
+     601: sipush        139
+     604: bipush        20
+     606: bipush        53
+     608: iload         7
+     610: bipush        36
+     612: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     615: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     618: aload_0
+     619: getfield      #64                 // Field windowWidth:I
+     622: bipush        106
+     624: isub
+     625: istore        9
+     627: iconst_0
+     628: istore        10
+     630: iload         9
+     632: ifle          691
+     635: aload_1
+     636: getstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+     639: iload         5
+     641: bipush        53
+     643: iadd
+     644: iload         10
+     646: bipush        86
+     648: imul
+     649: iadd
+     650: iload         6
+     652: bipush        56
+     654: iadd
+     655: iload         8
+     657: bipush        36
+     659: imul
+     660: iadd
+     661: bipush        53
+     663: bipush        20
+     665: iload         9
+     667: bipush        86
+     669: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     672: iload         7
+     674: bipush        36
+     676: invokestatic  #215                // Method java/lang/Math.min:(II)I
+     679: invokevirtual #209                // Method net/minecraft/client/gui/GuiGraphics.m_280218_:(Lnet/minecraft/resources/ResourceLocation;IIIIII)V
+     682: iinc          10, 1
+     685: iinc          9, -86
+     688: goto          630
+     691: iinc          8, 1
+     694: iinc          7, -36
+     697: goto          536
+     700: aload_0
+     701: getfield      #45                 // Field behaviour:Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;
+     704: invokevirtual #219                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.getItem:()Lnet/minecraft/world/item/Item;
+     707: invokevirtual #225                // Method net/minecraft/world/item/Item.m_7968_:()Lnet/minecraft/world/item/ItemStack;
+     710: invokestatic  #229                // Method net/createmod/catnip/gui/element/GuiGameElement.of:(Lnet/minecraft/world/item/ItemStack;)Lnet/createmod/catnip/gui/element/GuiGameElement$GuiRenderBuilder;
+     713: ldc2_w        #230                // double 4.0d
+     716: invokevirtual #235                // Method net/createmod/catnip/gui/element/GuiGameElement$GuiRenderBuilder.scale:(D)Lnet/createmod/catnip/gui/element/GuiGameElement$GuiRenderBuilder;
+     719: fconst_0
+     720: fconst_0
+     721: ldc           #236                // float -200.0f
+     723: invokevirtual #240                // Method net/createmod/catnip/gui/element/GuiGameElement$GuiRenderBuilder.at:(FFF)Lnet/createmod/catnip/gui/element/RenderElement;
+     726: aload_1
+     727: iload         5
+     729: aload_0
+     730: getfield      #64                 // Field windowWidth:I
+     733: iadd
+     734: iload         6
+     736: aload_0
+     737: getfield      #67                 // Field windowHeight:I
+     740: iadd
+     741: bipush        48
+     743: isub
+     744: invokeinterface #246,  4          // InterfaceMethod net/createmod/catnip/gui/element/RenderElement.render:(Lnet/minecraft/client/gui/GuiGraphics;II)V
+     749: return
+
+  public void m_7861_();
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: invokevirtual #261                // Method sendIt:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)V
+       5: aload_0
+       6: invokespecial #263                // Method net/createmod/catnip/gui/AbstractSimiScreen.m_7861_:()V
+       9: return
+
+  private void sendIt(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelPosition);
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field behaviour:Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;
+       4: invokevirtual #268                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.getPanelPosition:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+       7: astore_2
+       8: new           #270                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConfigurationPacket
+      11: dup
+      12: aload_2
+      13: ldc_w         #272                // String
+      16: new           #274                // class java/util/HashMap
+      19: dup
+      20: invokespecial #275                // Method java/util/HashMap."<init>":()V
+      23: invokestatic  #281                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      26: iconst_0
+      27: iconst_0
+      28: aload_1
+      29: iconst_0
+      30: aload_0
+      31: getfield      #283                // Field sendReset:Z
+      34: iconst_0
+      35: invokespecial #286                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConfigurationPacket."<init>":(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Ljava/lang/String;Ljava/util/Map;Ljava/util/List;IILcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;ZZZ)V
+      38: astore_3
+      39: invokestatic  #292                // Method com/simibubi/create/AllPackets.getChannel:()Lnet/minecraftforge/network/simple/SimpleChannel;
+      42: aload_3
+      43: invokevirtual #298                // Method net/minecraftforge/network/simple/SimpleChannel.sendToServer:(Ljava/lang/Object;)V
+      46: return
+
+  private void lambda$init$2();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field behaviour:Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;
+       4: invokestatic  #309                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionHandler.startRelocating:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)V
+       7: aload_0
+       8: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+      11: aconst_null
+      12: invokevirtual #186                // Method net/minecraft/client/Minecraft.m_91152_:(Lnet/minecraft/client/gui/screens/Screen;)V
+      15: return
+
+  private void lambda$init$1();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field behaviour:Lnet/liukrast/eg/api/logistics/board/AbstractPanelBehaviour;
+       4: invokestatic  #312                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionHandler.startConnection:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)V
+       7: aload_0
+       8: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+      11: aconst_null
+      12: invokevirtual #186                // Method net/minecraft/client/Minecraft.m_91152_:(Lnet/minecraft/client/gui/screens/Screen;)V
+      15: return
+
+  private void lambda$init$0();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #283                // Field sendReset:Z
+       5: aload_0
+       6: getfield      #84                 // Field f_96541_:Lnet/minecraft/client/Minecraft;
+       9: aconst_null
+      10: invokevirtual #186                // Method net/minecraft/client/Minecraft.m_91152_:(Lnet/minecraft/client/gui/screens/Screen;)V
+      13: return
+
+  static {};
+    Code:
+       0: ldc           #2                  // class net/liukrast/eg/api/logistics/board/BasicPanelScreen
+       2: invokevirtual #319                // Method java/lang/Class.desiredAssertionStatus:()Z
+       5: ifne          12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: putstatic     #80                 // Field $assertionsDisabled:Z
+      16: ldc_w         #321                // String textures/gui/generic_gauge.png
+      19: iconst_0
+      20: anewarray     #123                // class java/lang/Object
+      23: invokestatic  #327                // Method net/liukrast/eg/EGConstants.id:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      26: putstatic     #205                // Field TEXTURE:Lnet/minecraft/resources/ResourceLocation;
+      29: return
+}

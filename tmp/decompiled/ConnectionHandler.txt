@@ -1,0 +1,751 @@
+﻿Compiled from "FactoryPanelConnectionHandler.java"
+public class com.simibubi.create.content.logistics.factoryBoard.FactoryPanelConnectionHandler {
+  static com.simibubi.create.content.logistics.factoryBoard.FactoryPanelPosition connectingFrom;
+
+  static net.minecraft.world.phys.AABB connectingFromBox;
+
+  static boolean relocating;
+
+  static com.simibubi.create.content.logistics.factoryBoard.FactoryPanelPosition validRelocationTarget;
+
+  public com.simibubi.create.content.logistics.factoryBoard.FactoryPanelConnectionHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #41                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean panelClicked(net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.player.Player, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+       3: ifnonnull     8
+       6: iconst_0
+       7: ireturn
+       8: aload_0
+       9: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      12: invokestatic  #56                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.at:(Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;
+      15: astore_3
+      16: aload_2
+      17: invokevirtual #60                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPanelPosition:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      20: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      23: invokevirtual #66                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.equals:(Ljava/lang/Object;)Z
+      26: ifne          33
+      29: aload_3
+      30: ifnonnull     51
+      33: aload_1
+      34: invokestatic  #72                 // InterfaceMethod net/minecraft/network/chat/Component.empty:()Lnet/minecraft/network/chat/MutableComponent;
+      37: iconst_1
+      38: invokevirtual #78                 // Method net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      41: aconst_null
+      42: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      45: aconst_null
+      46: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      49: iconst_1
+      50: ireturn
+      51: aload_3
+      52: aload_2
+      53: invokestatic  #84                 // Method checkForIssues:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)Ljava/lang/String;
+      56: astore        4
+      58: aload         4
+      60: ifnull        113
+      63: aload_1
+      64: aload         4
+      66: iconst_0
+      67: anewarray     #4                  // class java/lang/Object
+      70: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+      73: getstatic     #96                 // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+      76: invokevirtual #102                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+      79: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+      82: iconst_1
+      83: invokevirtual #78                 // Method net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      86: aconst_null
+      87: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      90: aconst_null
+      91: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      94: getstatic     #109                // Field com/simibubi/create/AllSoundEvents.DENY:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+      97: aload_1
+      98: invokevirtual #112                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+     101: aload_1
+     102: invokevirtual #116                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+     105: fconst_1
+     106: fconst_1
+     107: iconst_0
+     108: invokevirtual #120                // Method com/simibubi/create/AllSoundEvents$SoundEntry.playAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;FFZ)V
+     111: iconst_1
+     112: ireturn
+     113: aload_2
+     114: invokevirtual #126                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getFilter:()Lnet/minecraft/world/item/ItemStack;
+     117: astore        5
+     119: aload_3
+     120: invokevirtual #126                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getFilter:()Lnet/minecraft/world/item/ItemStack;
+     123: astore        6
+     125: invokestatic  #132                // Method com/simibubi/create/AllPackets.getChannel:()Lnet/minecraftforge/network/simple/SimpleChannel;
+     128: new           #134                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket
+     131: dup
+     132: aload_2
+     133: invokevirtual #60                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPanelPosition:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     136: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     139: iconst_0
+     140: invokespecial #137                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket."<init>":(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Z)V
+     143: invokevirtual #143                // Method net/minecraftforge/network/simple/SimpleChannel.sendToServer:(Ljava/lang/Object;)V
+     146: aload_1
+     147: ldc           #145                // String factory_panel.panels_connected
+     149: iconst_2
+     150: anewarray     #4                  // class java/lang/Object
+     153: dup
+     154: iconst_0
+     155: aload         5
+     157: invokevirtual #151                // Method net/minecraft/world/item/ItemStack.getHoverName:()Lnet/minecraft/network/chat/Component;
+     160: invokeinterface #155,  1          // InterfaceMethod net/minecraft/network/chat/Component.getString:()Ljava/lang/String;
+     165: aastore
+     166: dup
+     167: iconst_1
+     168: aload         6
+     170: invokevirtual #151                // Method net/minecraft/world/item/ItemStack.getHoverName:()Lnet/minecraft/network/chat/Component;
+     173: invokeinterface #155,  1          // InterfaceMethod net/minecraft/network/chat/Component.getString:()Ljava/lang/String;
+     178: aastore
+     179: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     182: getstatic     #158                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+     185: invokevirtual #102                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     188: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     191: iconst_1
+     192: invokevirtual #78                 // Method net/minecraft/world/entity/player/Player.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     195: aconst_null
+     196: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     199: aconst_null
+     200: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+     203: aload_1
+     204: invokevirtual #112                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+     207: aload_1
+     208: invokevirtual #116                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+     211: getstatic     #164                // Field net/minecraft/sounds/SoundEvents.AMETHYST_BLOCK_PLACE:Lnet/minecraft/sounds/SoundEvent;
+     214: getstatic     #170                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     217: ldc           #171                // float 0.5f
+     219: ldc           #171                // float 0.5f
+     221: iconst_0
+     222: invokevirtual #177                // Method net/minecraft/world/level/Level.playLocalSound:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+     225: iconst_1
+     226: ireturn
+
+  private static java.lang.String checkForIssues(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: aload_0
+       1: ifnonnull     7
+       4: ldc           #189                // String factory_panel.connection_aborted
+       6: areturn
+       7: aload_0
+       8: getfield      #193                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.targetedBy:Ljava/util/Map;
+      11: aload_1
+      12: invokevirtual #60                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPanelPosition:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      15: invokeinterface #198,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      20: ifeq          26
+      23: ldc           #200                // String factory_panel.already_connected
+      25: areturn
+      26: aload_0
+      27: getfield      #193                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.targetedBy:Ljava/util/Map;
+      30: invokeinterface #204,  1          // InterfaceMethod java/util/Map.size:()I
+      35: bipush        9
+      37: if_icmplt     43
+      40: ldc           #206                // String factory_panel.cannot_add_more_inputs
+      42: areturn
+      43: aload_1
+      44: getfield      #210                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      47: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      50: astore_2
+      51: aload_0
+      52: getfield      #210                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      55: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      58: astore_3
+      59: aload_1
+      60: invokevirtual #219                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPos:()Lnet/minecraft/core/BlockPos;
+      63: aload_0
+      64: invokevirtual #219                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPos:()Lnet/minecraft/core/BlockPos;
+      67: invokevirtual #225                // Method net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      70: astore        4
+      72: aload_2
+      73: getstatic     #229                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      76: iconst_0
+      77: invokestatic  #235                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      80: invokevirtual #241                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      83: checkcast     #237                // class net/minecraft/world/level/block/state/BlockState
+      86: getstatic     #244                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      89: iconst_0
+      90: invokestatic  #235                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      93: invokevirtual #241                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      96: aload_3
+      97: getstatic     #229                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     100: iconst_0
+     101: invokestatic  #235                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     104: invokevirtual #241                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     107: checkcast     #237                // class net/minecraft/world/level/block/state/BlockState
+     110: getstatic     #244                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     113: iconst_0
+     114: invokestatic  #235                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     117: invokevirtual #241                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     120: if_acmpeq     126
+     123: ldc           #246                // String factory_panel.same_orientation
+     125: areturn
+     126: aload_2
+     127: invokestatic  #250                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.connectedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+     130: invokevirtual #254                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     133: aload         4
+     135: invokevirtual #257                // Method net/minecraft/core/BlockPos.getX:()I
+     138: aload         4
+     140: invokevirtual #260                // Method net/minecraft/core/BlockPos.getY:()I
+     143: aload         4
+     145: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+     148: invokevirtual #267                // Method net/minecraft/core/Direction$Axis.choose:(III)I
+     151: ifeq          158
+     154: ldc_w         #269                // String factory_panel.same_surface
+     157: areturn
+     158: aload         4
+     160: getstatic     #273                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+     163: ldc2_w        #274                // double 16.0d
+     166: invokevirtual #279                // Method net/minecraft/core/BlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+     169: ifne          176
+     172: ldc_w         #281                // String factory_panel.too_far_apart
+     175: areturn
+     176: aload_1
+     177: invokevirtual #285                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.panelBE:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlockEntity;
+     180: getfield      #290                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlockEntity.restocker:Z
+     183: ifeq          190
+     186: ldc_w         #292                // String factory_panel.input_in_restock_mode
+     189: areturn
+     190: aload_1
+     191: invokevirtual #126                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getFilter:()Lnet/minecraft/world/item/ItemStack;
+     194: invokevirtual #296                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+     197: ifne          210
+     200: aload_0
+     201: invokevirtual #126                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getFilter:()Lnet/minecraft/world/item/ItemStack;
+     204: invokevirtual #296                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+     207: ifeq          214
+     210: ldc_w         #298                // String factory_panel.no_item
+     213: areturn
+     214: aconst_null
+     215: areturn
+
+  private static java.lang.String checkForIssues(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSupportBehaviour);
+    Code:
+       0: aload_0
+       1: ifnonnull     7
+       4: ldc           #189                // String factory_panel.connection_aborted
+       6: areturn
+       7: aload_0
+       8: getfield      #210                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      11: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      14: astore_2
+      15: aload_1
+      16: getfield      #306                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      19: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      22: astore_3
+      23: aload_1
+      24: invokevirtual #307                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.getPos:()Lnet/minecraft/core/BlockPos;
+      27: aload_0
+      28: invokevirtual #219                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPos:()Lnet/minecraft/core/BlockPos;
+      31: invokevirtual #225                // Method net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      34: astore        4
+      36: aload_2
+      37: invokestatic  #250                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.connectedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+      40: astore        5
+      42: aload         5
+      44: aload_3
+      45: getstatic     #313                // Field com/simibubi/create/foundation/block/WrenchableDirectionalBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      48: invokevirtual #317                // Method net/minecraft/world/level/block/state/BlockState.getOptionalValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/util/Optional;
+      51: aload         5
+      53: invokevirtual #323                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      56: if_acmpeq     62
+      59: ldc           #246                // String factory_panel.same_orientation
+      61: areturn
+      62: aload         5
+      64: invokevirtual #254                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+      67: aload         4
+      69: invokevirtual #257                // Method net/minecraft/core/BlockPos.getX:()I
+      72: aload         4
+      74: invokevirtual #260                // Method net/minecraft/core/BlockPos.getY:()I
+      77: aload         4
+      79: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+      82: invokevirtual #267                // Method net/minecraft/core/Direction$Axis.choose:(III)I
+      85: ifeq          92
+      88: ldc_w         #269                // String factory_panel.same_surface
+      91: areturn
+      92: aload         4
+      94: getstatic     #273                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      97: ldc2_w        #274                // double 16.0d
+     100: invokevirtual #279                // Method net/minecraft/core/BlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+     103: ifne          110
+     106: ldc_w         #281                // String factory_panel.too_far_apart
+     109: areturn
+     110: aconst_null
+     111: areturn
+
+  public static void clientTick();
+    Code:
+       0: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+       3: ifnull        12
+       6: getstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+       9: ifnonnull     13
+      12: return
+      13: invokestatic  #332                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      16: astore_0
+      17: aload_0
+      18: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+      21: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      24: invokestatic  #56                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.at:(Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;
+      27: astore_1
+      28: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      31: invokevirtual #338                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+      34: aload_0
+      35: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      38: invokevirtual #344                // Method net/minecraft/client/player/LocalPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      41: ldc2_w        #274                // double 16.0d
+      44: invokevirtual #279                // Method net/minecraft/core/BlockPos.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+      47: ifeq          54
+      50: aload_1
+      51: ifnonnull     74
+      54: aconst_null
+      55: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      58: aconst_null
+      59: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      62: aload_0
+      63: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      66: invokestatic  #72                 // InterfaceMethod net/minecraft/network/chat/Component.empty:()Lnet/minecraft/network/chat/MutableComponent;
+      69: iconst_1
+      70: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      73: return
+      74: invokestatic  #350                // Method net/createmod/catnip/outliner/Outliner.getInstance:()Lnet/createmod/catnip/outliner/Outliner;
+      77: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      80: getstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      83: invokevirtual #354                // Method net/createmod/catnip/outliner/Outliner.showAABB:(Ljava/lang/Object;Lnet/minecraft/world/phys/AABB;)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+      86: invokestatic  #359                // Method net/createmod/catnip/animation/AnimationTickHolder.getTicks:()I
+      89: bipush        16
+      91: irem
+      92: bipush        8
+      94: if_icmple     103
+      97: ldc_w         #360                // int 3716964
+     100: goto          106
+     103: ldc_w         #361                // int 11006064
+     106: invokevirtual #365                // Method net/createmod/catnip/outliner/Outline$OutlineParams.colored:(I)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     109: ldc_w         #366                // float 0.0625f
+     112: invokevirtual #370                // Method net/createmod/catnip/outliner/Outline$OutlineParams.lineWidth:(F)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     115: pop
+     116: aload_0
+     117: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     120: getstatic     #372                // Field relocating:Z
+     123: ifeq          132
+     126: ldc_w         #374                // String factory_panel.click_to_relocate
+     129: goto          135
+     132: ldc_w         #376                // String factory_panel.click_second_panel
+     135: iconst_0
+     136: anewarray     #4                  // class java/lang/Object
+     139: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     142: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     145: iconst_1
+     146: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     149: getstatic     #372                // Field relocating:Z
+     152: ifne          156
+     155: return
+     156: aconst_null
+     157: putstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     160: aload_0
+     161: getfield      #382                // Field net/minecraft/client/Minecraft.hitResult:Lnet/minecraft/world/phys/HitResult;
+     164: astore_3
+     165: aload_3
+     166: instanceof    #384                // class net/minecraft/world/phys/BlockHitResult
+     169: ifeq          187
+     172: aload_3
+     173: checkcast     #384                // class net/minecraft/world/phys/BlockHitResult
+     176: astore_2
+     177: aload_2
+     178: invokevirtual #388                // Method net/minecraft/world/phys/BlockHitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+     181: getstatic     #392                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+     184: if_acmpne     188
+     187: return
+     188: aload_2
+     189: invokevirtual #396                // Method net/minecraft/world/phys/BlockHitResult.getLocation:()Lnet/minecraft/world/phys/Vec3;
+     192: aload_2
+     193: invokevirtual #400                // Method net/minecraft/world/phys/BlockHitResult.getDirection:()Lnet/minecraft/core/Direction;
+     196: invokevirtual #404                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+     199: invokestatic  #410                // Method net/minecraft/world/phys/Vec3.atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+     202: ldc2_w        #411                // double 0.03125d
+     205: invokevirtual #416                // Method net/minecraft/world/phys/Vec3.scale:(D)Lnet/minecraft/world/phys/Vec3;
+     208: invokevirtual #420                // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     211: astore_3
+     212: aload_3
+     213: invokestatic  #424                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+     216: astore        4
+     218: aload_1
+     219: getfield      #210                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+     222: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     225: astore        5
+     227: aload         4
+     229: aload         5
+     231: aload_3
+     232: invokestatic  #428                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.getTargetedSlot:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;
+     235: astore        6
+     237: aload         4
+     239: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     242: invokevirtual #338                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+     245: invokevirtual #225                // Method net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     248: astore        7
+     250: aload         5
+     252: invokestatic  #250                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.connectedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+     255: astore        8
+     257: aload         8
+     259: invokevirtual #254                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+     262: aload         7
+     264: invokevirtual #257                // Method net/minecraft/core/BlockPos.getX:()I
+     267: aload         7
+     269: invokevirtual #260                // Method net/minecraft/core/BlockPos.getY:()I
+     272: aload         7
+     274: invokevirtual #263                // Method net/minecraft/core/BlockPos.getZ:()I
+     277: invokevirtual #267                // Method net/minecraft/core/Direction$Axis.choose:(III)I
+     280: ifeq          284
+     283: return
+     284: getstatic     #434                // Field com/simibubi/create/AllBlocks.FACTORY_GAUGE:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     287: invokevirtual #440                // Method com/tterrag/registrate/util/entry/BlockEntry.get:()Ljava/lang/Object;
+     290: checkcast     #29                 // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock
+     293: aload         5
+     295: aload_0
+     296: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     299: aload         4
+     301: invokevirtual #444                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.canSurvive:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     304: ifne          308
+     307: return
+     308: getstatic     #447                // Field com/simibubi/create/AllBlocks.PACKAGER:Lcom/tterrag/registrate/util/entry/BlockEntry;
+     311: aload_0
+     312: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     315: aload         4
+     317: aload         8
+     319: invokevirtual #450                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     322: invokevirtual #454                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     325: invokevirtual #459                // Method net/minecraft/client/multiplayer/ClientLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     328: invokevirtual #463                // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     331: ifeq          335
+     334: return
+     335: new           #62                 // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition
+     338: dup
+     339: aload         4
+     341: aload         6
+     343: invokespecial #466                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition."<init>":(Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;)V
+     346: putstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     349: invokestatic  #350                // Method net/createmod/catnip/outliner/Outliner.getInstance:()Lnet/createmod/catnip/outliner/Outliner;
+     352: ldc_w         #468                // String target
+     355: aload         5
+     357: getstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     360: invokestatic  #472                // Method getBB:(Lnet/minecraft/world/level/block/state/BlockState;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lnet/minecraft/world/phys/AABB;
+     363: invokevirtual #354                // Method net/createmod/catnip/outliner/Outliner.showAABB:(Ljava/lang/Object;Lnet/minecraft/world/phys/AABB;)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     366: ldc_w         #473                // int 15658734
+     369: invokevirtual #365                // Method net/createmod/catnip/outliner/Outline$OutlineParams.colored:(I)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     372: invokevirtual #477                // Method net/createmod/catnip/outliner/Outline$OutlineParams.disableLineNormals:()Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     375: ldc_w         #366                // float 0.0625f
+     378: invokevirtual #370                // Method net/createmod/catnip/outliner/Outline$OutlineParams.lineWidth:(F)Lnet/createmod/catnip/outliner/Outline$OutlineParams;
+     381: pop
+     382: return
+
+  public static boolean onRightClick();
+    Code:
+       0: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+       3: ifnull        12
+       6: getstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+       9: ifnonnull     14
+      12: iconst_0
+      13: ireturn
+      14: invokestatic  #332                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      17: astore_0
+      18: iconst_0
+      19: istore_1
+      20: getstatic     #372                // Field relocating:Z
+      23: ifeq          111
+      26: aload_0
+      27: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      30: invokevirtual #491                // Method net/minecraft/client/player/LocalPlayer.isShiftKeyDown:()Z
+      33: ifeq          40
+      36: aconst_null
+      37: putstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      40: getstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      43: ifnull        66
+      46: invokestatic  #132                // Method com/simibubi/create/AllPackets.getChannel:()Lnet/minecraftforge/network/simple/SimpleChannel;
+      49: new           #134                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket
+      52: dup
+      53: getstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      56: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      59: iconst_1
+      60: invokespecial #137                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket."<init>":(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Z)V
+      63: invokevirtual #143                // Method net/minecraftforge/network/simple/SimpleChannel.sendToServer:(Ljava/lang/Object;)V
+      66: aconst_null
+      67: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      70: aconst_null
+      71: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      74: getstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      77: ifnonnull     101
+      80: aload_0
+      81: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      84: ldc_w         #493                // String factory_panel.relocation_aborted
+      87: iconst_0
+      88: anewarray     #4                  // class java/lang/Object
+      91: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+      94: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+      97: iconst_1
+      98: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     101: iconst_0
+     102: putstatic     #372                // Field relocating:Z
+     105: aconst_null
+     106: putstatic     #378                // Field validRelocationTarget:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     109: iconst_1
+     110: ireturn
+     111: aload_0
+     112: getfield      #382                // Field net/minecraft/client/Minecraft.hitResult:Lnet/minecraft/world/phys/HitResult;
+     115: astore_3
+     116: aload_3
+     117: instanceof    #384                // class net/minecraft/world/phys/BlockHitResult
+     120: ifeq          478
+     123: aload_3
+     124: checkcast     #384                // class net/minecraft/world/phys/BlockHitResult
+     127: astore_2
+     128: aload_2
+     129: invokevirtual #388                // Method net/minecraft/world/phys/BlockHitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+     132: getstatic     #392                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+     135: if_acmpeq     478
+     138: aload_0
+     139: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     142: aload_2
+     143: invokevirtual #496                // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     146: invokevirtual #500                // Method net/minecraft/client/multiplayer/ClientLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+     149: astore_3
+     150: aload_0
+     151: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     154: aload_2
+     155: invokevirtual #496                // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     158: getstatic     #504                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+     161: invokestatic  #509                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.get:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+     164: checkcast     #305                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour
+     167: astore        4
+     169: aload         4
+     171: ifnull        469
+     174: aload_0
+     175: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     178: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     181: invokestatic  #56                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.at:(Lnet/minecraft/world/level/BlockAndTintGetter;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;
+     184: astore        5
+     186: aload         5
+     188: aload         4
+     190: invokestatic  #511                // Method checkForIssues:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;)Ljava/lang/String;
+     193: astore        6
+     195: aload         6
+     197: ifnull        256
+     200: aload_0
+     201: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     204: aload         6
+     206: iconst_0
+     207: anewarray     #4                  // class java/lang/Object
+     210: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     213: getstatic     #96                 // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     216: invokevirtual #102                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     219: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     222: iconst_1
+     223: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     226: aconst_null
+     227: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     230: aconst_null
+     231: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+     234: getstatic     #109                // Field com/simibubi/create/AllSoundEvents.DENY:Lcom/simibubi/create/AllSoundEvents$SoundEntry;
+     237: aload_0
+     238: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     241: aload_0
+     242: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     245: invokevirtual #344                // Method net/minecraft/client/player/LocalPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+     248: fconst_1
+     249: fconst_1
+     250: iconst_0
+     251: invokevirtual #120                // Method com/simibubi/create/AllSoundEvents$SoundEntry.playAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Vec3i;FFZ)V
+     254: iconst_1
+     255: ireturn
+     256: aconst_null
+     257: astore        7
+     259: ldc2_w        #514                // double Infinityd
+     262: dstore        8
+     264: invokestatic  #519                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot.values:()[Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;
+     267: astore        10
+     269: aload         10
+     271: arraylength
+     272: istore        11
+     274: iconst_0
+     275: istore        12
+     277: iload         12
+     279: iload         11
+     281: if_icmpge     372
+     284: aload         10
+     286: iload         12
+     288: aaload
+     289: astore        13
+     291: new           #62                 // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition
+     294: dup
+     295: aload_3
+     296: invokevirtual #522                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+     299: aload         13
+     301: invokespecial #466                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition."<init>":(Lnet/minecraft/core/BlockPos;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;)V
+     304: astore        14
+     306: new           #524                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection
+     309: dup
+     310: aload         14
+     312: iconst_1
+     313: invokespecial #527                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection."<init>":(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;I)V
+     316: astore        15
+     318: aload         15
+     320: aload_0
+     321: getfield      #335                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+     324: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     327: invokevirtual #338                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+     330: invokevirtual #459                // Method net/minecraft/client/multiplayer/ClientLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     333: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     336: invokevirtual #531                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnection.calculatePathDiff:(Lnet/minecraft/world/level/block/state/BlockState;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lnet/minecraft/world/phys/Vec3;
+     339: astore        16
+     341: dload         8
+     343: aload         16
+     345: invokevirtual #535                // Method net/minecraft/world/phys/Vec3.lengthSqr:()D
+     348: dcmpg
+     349: ifge          355
+     352: goto          366
+     355: aload         16
+     357: invokevirtual #535                // Method net/minecraft/world/phys/Vec3.lengthSqr:()D
+     360: dstore        8
+     362: aload         14
+     364: astore        7
+     366: iinc          12, 1
+     369: goto          277
+     372: invokestatic  #132                // Method com/simibubi/create/AllPackets.getChannel:()Lnet/minecraftforge/network/simple/SimpleChannel;
+     375: new           #134                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket
+     378: dup
+     379: aload         7
+     381: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     384: iconst_0
+     385: invokespecial #137                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelConnectionPacket."<init>":(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;Z)V
+     388: invokevirtual #143                // Method net/minecraftforge/network/simple/SimpleChannel.sendToServer:(Ljava/lang/Object;)V
+     391: aload_0
+     392: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     395: ldc_w         #537                // String factory_panel.link_connected
+     398: iconst_1
+     399: anewarray     #4                  // class java/lang/Object
+     402: dup
+     403: iconst_0
+     404: aload_3
+     405: invokevirtual #538                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     408: invokevirtual #542                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     411: invokevirtual #547                // Method net/minecraft/world/level/block/Block.getName:()Lnet/minecraft/network/chat/MutableComponent;
+     414: aastore
+     415: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     418: getstatic     #158                // Field net/minecraft/ChatFormatting.GREEN:Lnet/minecraft/ChatFormatting;
+     421: invokevirtual #102                // Method net/createmod/catnip/lang/LangBuilder.style:(Lnet/minecraft/ChatFormatting;)Lnet/createmod/catnip/lang/LangBuilder;
+     424: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     427: iconst_1
+     428: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     431: aconst_null
+     432: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     435: aconst_null
+     436: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+     439: aload_0
+     440: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     443: invokevirtual #548                // Method net/minecraft/client/player/LocalPlayer.level:()Lnet/minecraft/world/level/Level;
+     446: aload_0
+     447: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     450: invokevirtual #344                // Method net/minecraft/client/player/LocalPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+     453: getstatic     #164                // Field net/minecraft/sounds/SoundEvents.AMETHYST_BLOCK_PLACE:Lnet/minecraft/sounds/SoundEvent;
+     456: getstatic     #170                // Field net/minecraft/sounds/SoundSource.BLOCKS:Lnet/minecraft/sounds/SoundSource;
+     459: ldc           #171                // float 0.5f
+     461: ldc           #171                // float 0.5f
+     463: iconst_0
+     464: invokevirtual #177                // Method net/minecraft/world/level/Level.playLocalSound:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+     467: iconst_1
+     468: ireturn
+     469: aload_3
+     470: instanceof    #287                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlockEntity
+     473: ifne          478
+     476: iconst_1
+     477: istore_1
+     478: aload_0
+     479: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     482: invokevirtual #491                // Method net/minecraft/client/player/LocalPlayer.isShiftKeyDown:()Z
+     485: ifne          494
+     488: iload_1
+     489: ifne          494
+     492: iconst_0
+     493: ireturn
+     494: aconst_null
+     495: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+     498: aconst_null
+     499: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+     502: aload_0
+     503: getfield      #341                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+     506: ldc           #189                // String factory_panel.connection_aborted
+     508: iconst_0
+     509: anewarray     #4                  // class java/lang/Object
+     512: invokestatic  #90                 // Method com/simibubi/create/foundation/utility/CreateLang.translate:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/createmod/catnip/lang/LangBuilder;
+     515: invokevirtual #105                // Method net/createmod/catnip/lang/LangBuilder.component:()Lnet/minecraft/network/chat/MutableComponent;
+     518: iconst_1
+     519: invokevirtual #345                // Method net/minecraft/client/player/LocalPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     522: iconst_1
+     523: ireturn
+
+  public static void startRelocating(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: aload_0
+       1: invokestatic  #562                // Method startConnection:(Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour;)V
+       4: iconst_1
+       5: putstatic     #372                // Field relocating:Z
+       8: return
+
+  public static void startConnection(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: iconst_0
+       1: putstatic     #372                // Field relocating:Z
+       4: aload_0
+       5: invokevirtual #60                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.getPanelPosition:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+       8: putstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      11: aload_0
+      12: getfield      #210                // Field com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      15: invokevirtual #216                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      18: getstatic     #50                 // Field connectingFrom:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;
+      21: invokestatic  #472                // Method getBB:(Lnet/minecraft/world/level/block/state/BlockState;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition;)Lnet/minecraft/world/phys/AABB;
+      24: putstatic     #80                 // Field connectingFromBox:Lnet/minecraft/world/phys/AABB;
+      27: return
+
+  public static net.minecraft.world.phys.AABB getBB(net.minecraft.world.level.block.state.BlockState, com.simibubi.create.content.logistics.factoryBoard.FactoryPanelPosition);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #566                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.slot:()Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;
+       5: invokestatic  #572                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSlotPositioning.getCenterOfSlot:(Lnet/minecraft/world/level/block/state/BlockState;Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock$PanelSlot;)Lnet/minecraft/world/phys/Vec3;
+       8: aload_1
+       9: invokevirtual #338                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+      12: invokestatic  #410                // Method net/minecraft/world/phys/Vec3.atLowerCornerOf:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;
+      15: invokevirtual #420                // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      18: astore_2
+      19: aload_0
+      20: invokestatic  #250                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.connectedDirection:(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/core/Direction;
+      23: invokestatic  #578                // Method net/createmod/catnip/math/VecHelper.axisAlingedPlaneOf:(Lnet/minecraft/core/Direction;)Lnet/minecraft/world/phys/Vec3;
+      26: astore_3
+      27: new           #580                // class net/minecraft/world/phys/AABB
+      30: dup
+      31: aload_2
+      32: aload_2
+      33: invokespecial #583                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+      36: aload_3
+      37: getfield      #586                // Field net/minecraft/world/phys/Vec3.x:D
+      40: ldc2_w        #587                // double 3.0d
+      43: dmul
+      44: ldc2_w        #274                // double 16.0d
+      47: ddiv
+      48: aload_3
+      49: getfield      #591                // Field net/minecraft/world/phys/Vec3.y:D
+      52: ldc2_w        #587                // double 3.0d
+      55: dmul
+      56: ldc2_w        #274                // double 16.0d
+      59: ddiv
+      60: aload_3
+      61: getfield      #594                // Field net/minecraft/world/phys/Vec3.z:D
+      64: ldc2_w        #587                // double 3.0d
+      67: dmul
+      68: ldc2_w        #274                // double 16.0d
+      71: ddiv
+      72: invokevirtual #598                // Method net/minecraft/world/phys/AABB.inflate:(DDD)Lnet/minecraft/world/phys/AABB;
+      75: areturn
+}

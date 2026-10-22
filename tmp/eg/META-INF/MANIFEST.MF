@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: extra_gauges
+Specification-Vendor: LiukRast, Francywott, swzo
+Specification-Version: 1
+Implementation-Title: ExtraGaugesForge
+Implementation-Version: 2.0.7
+Implementation-Vendor: LiukRast, Francywott, swzo
+Implementation-Timestamp: 2025-11-05T21:03:17+0100
+MixinConfigs: extra_gauges.mixins.json
+

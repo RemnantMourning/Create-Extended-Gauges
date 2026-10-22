@@ -1,0 +1,27 @@
+{
+  "package": "com.rem.gaugeenhancement.mixin",
+  "required": true,
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinItemStack",
+    "FactoryPanelBehaviourMixin",
+    "FactoryPanelBehaviourOrderMixin",
+    "FactoryPanelConfigurationPacketMixin",
+    "AbstractPanelBehaviourConsumeMixin",
+    "AbstractPanelBehaviourOrderPersistMixin",
+    "StringPanelBehaviourJoinMixin"
+  ],
+  "server": [],
+  "client": [
+    "AccessTitleScreen",
+    "ExampleMixin",
+    "FactoryPanelConnectionHandlerMixin",
+    "client.BasicPanelScreenMixin",
+    "client.FactoryPanelScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

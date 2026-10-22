@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+issueTrackerURL="https://github.com/LIUKRAST/CreateExtraGauges/issues"
+[[mods]]
+modId = "extra_gauges"
+version = "2.0.7"
+displayName = "Create: Extra Gauges"
+displayURL="https://discord.gg/pvn8zg9bNY"
+logoFile="extra_gauges.png"
+credits='''Thanks to Propants for the initial idea
+Thanks to our supporter swzo'''
+authors = "LiukRast, Francywott, swzo"
+description = '''Adds new Gauges to Create Mod'''
+
+[[dependencies."extra_gauges"]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."extra_gauges"]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."extra_gauges"]]
+modId = "create"
+mandatory = true
+versionRange = "[6.0.6,)"
+ordering = "AFTER"
+side = "BOTH"

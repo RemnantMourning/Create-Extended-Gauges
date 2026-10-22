@@ -1,0 +1,131 @@
+﻿Compiled from "PanelConnection.java"
+public class net.liukrast.eg.api.logistics.board.PanelConnection<T> {
+  private final java.util.Map<net.minecraft.world.level.block.Block, net.liukrast.eg.api.util.ConnectionExtra<T>> extraConnections;
+
+  public net.liukrast.eg.api.logistics.board.PanelConnection();
+    Code:
+       0: aload_0
+       1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #17                 // class java/util/HashMap
+       8: dup
+       9: invokespecial #18                 // Method java/util/HashMap."<init>":()V
+      12: putfield      #20                 // Field extraConnections:Ljava/util/Map;
+      15: return
+
+  public void addListener(net.liukrast.eg.api.util.ConnectionExtra<T>, net.minecraft.world.level.block.Block...);
+    Code:
+       0: aload_2
+       1: arraylength
+       2: ifne          16
+       5: getstatic     #32                 // Field net/liukrast/eg/EGConstants.LOGGER:Lorg/slf4j/Logger;
+       8: ldc           #34                 // String Registered panel connection listener without any blocks. {}
+      10: aload_0
+      11: invokeinterface #40,  3           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      16: aload_2
+      17: astore_3
+      18: aload_3
+      19: arraylength
+      20: istore        4
+      22: iconst_0
+      23: istore        5
+      25: iload         5
+      27: iload         4
+      29: if_icmpge     57
+      32: aload_3
+      33: iload         5
+      35: aaload
+      36: astore        6
+      38: aload_0
+      39: getfield      #20                 // Field extraConnections:Ljava/util/Map;
+      42: aload         6
+      44: aload_1
+      45: invokeinterface #48,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      50: pop
+      51: iinc          5, 1
+      54: goto          25
+      57: return
+
+  public static net.minecraft.core.Direction makeContext(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #62                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61376_:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       4: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.m_61138_:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+       7: ifeq          87
+      10: aload_0
+      11: getstatic     #62                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61376_:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      14: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.m_61143_:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      17: checkcast     #74                 // class net/minecraft/world/level/block/state/properties/AttachFace
+      20: astore_1
+      21: getstatic     #78                 // Field net/liukrast/eg/api/logistics/board/PanelConnection$1.$SwitchMap$net$minecraft$world$level$block$state$properties$AttachFace:[I
+      24: aload_1
+      25: invokevirtual #82                 // Method net/minecraft/world/level/block/state/properties/AttachFace.ordinal:()I
+      28: iaload
+      29: tableswitch   { // 1 to 3
+
+                     1: 64
+
+                     2: 70
+
+                     3: 76
+               default: 56
+          }
+      56: new           #84                 // class java/lang/IncompatibleClassChangeError
+      59: dup
+      60: invokespecial #85                 // Method java/lang/IncompatibleClassChangeError."<init>":()V
+      63: athrow
+      64: getstatic     #91                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      67: goto          86
+      70: getstatic     #94                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      73: goto          86
+      76: aload_0
+      77: getstatic     #98                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61374_:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      80: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.m_61143_:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      83: checkcast     #87                 // class net/minecraft/core/Direction
+      86: areturn
+      87: aload_0
+      88: getstatic     #98                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61374_:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      91: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.m_61138_:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      94: ifeq          108
+      97: aload_0
+      98: getstatic     #98                 // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61374_:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     101: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.m_61143_:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     104: checkcast     #87                 // class net/minecraft/core/Direction
+     107: areturn
+     108: aload_0
+     109: getstatic     #101                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61372_:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     112: invokevirtual #68                 // Method net/minecraft/world/level/block/state/BlockState.m_61138_:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     115: ifeq          129
+     118: aload_0
+     119: getstatic     #101                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.f_61372_:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     122: invokevirtual #72                 // Method net/minecraft/world/level/block/state/BlockState.m_61143_:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     125: checkcast     #87                 // class net/minecraft/core/Direction
+     128: areturn
+     129: aconst_null
+     130: areturn
+
+  public net.liukrast.eg.api.util.ConnectionExtra<T> getListener(net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field extraConnections:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #112,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #114                // class net/liukrast/eg/api/util/ConnectionExtra
+      13: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: getstatic     #122                // Field net/liukrast/eg/api/EGRegistries.PANEL_CONNECTION_REGISTRY:Ljava/util/function/Supplier;
+       3: invokeinterface #127,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #129                // class net/minecraftforge/registries/IForgeRegistry
+      11: aload_0
+      12: invokeinterface #133,  2          // InterfaceMethod net/minecraftforge/registries/IForgeRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      17: astore_1
+      18: aload_1
+      19: ifnonnull     27
+      22: ldc           #135                // String unregistered
+      24: goto          31
+      27: aload_1
+      28: invokevirtual #139                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      31: areturn
+}

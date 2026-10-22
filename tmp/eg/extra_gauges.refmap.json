@@ -1,0 +1,62 @@
+{
+  "mappings": {
+    "net/liukrast/eg/mixin/FactoryPanelScreenMixin": {
+      "init": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelScreen;m_7856_()V",
+      "Lnet/minecraft/world/item/crafting/CraftingRecipe;getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;": "Lnet/minecraft/world/item/crafting/CraftingRecipe;m_8043_(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;",
+      "mouseClicked": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelScreen;m_6375_(DDI)Z"
+    },
+    "net/liukrast/eg/mixin/FactoryPanelConnectionHandlerMixin": {
+      "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V": "Lnet/minecraft/world/entity/player/Player;m_5661_(Lnet/minecraft/network/chat/Component;Z)V",
+      "Lnet/minecraft/world/item/ItemStack;isEmpty()Z": "Lnet/minecraft/world/item/ItemStack;m_41619_()Z"
+    },
+    "net/liukrast/eg/mixin/FactoryPanelBehaviourMixin": {
+      "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;": "Lnet/minecraft/world/item/ItemStack;m_41720_()Lnet/minecraft/world/item/Item;",
+      "Lnet/minecraft/nbt/CompoundTag;putUUID(Ljava/lang/String;Ljava/util/UUID;)V": "Lnet/minecraft/nbt/CompoundTag;m_128362_(Ljava/lang/String;Ljava/util/UUID;)V",
+      "Lnet/minecraft/world/item/ItemStack;isEmpty()Z": "Lnet/minecraft/world/item/ItemStack;m_41619_()Z"
+    },
+    "net/liukrast/eg/mixin/PackageRepackageHelperMixin": {
+      "Lnet/minecraft/world/item/ItemStack;copyWithCount(I)Lnet/minecraft/world/item/ItemStack;": "Lnet/minecraft/world/item/ItemStack;m_255036_(I)Lnet/minecraft/world/item/ItemStack;"
+    },
+    "net/liukrast/eg/mixin/FactoryPanelBlockMixin": {
+      "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V": "Lnet/minecraft/world/entity/player/Player;m_5661_(Lnet/minecraft/network/chat/Component;Z)V",
+      "canBeReplaced": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6864_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/context/BlockPlaceContext;)Z",
+      "Lnet/minecraft/world/level/Level;isClientSide()Z": "Lnet/minecraft/world/level/Level;m_5776_()Z",
+      "use": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6227_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;",
+      "getStateForPlacement": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_5573_(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;",
+      "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;popResource(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_49840_(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V",
+      "Lnet/minecraft/world/entity/player/Inventory;placeItemBackInInventory(Lnet/minecraft/world/item/ItemStack;)V": "Lnet/minecraft/world/entity/player/Inventory;m_150079_(Lnet/minecraft/world/item/ItemStack;)V",
+      "setPlacedBy": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6402_(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V"
+    }
+  },
+  "data": {
+    "searge": {
+      "net/liukrast/eg/mixin/FactoryPanelScreenMixin": {
+        "init": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelScreen;m_7856_()V",
+        "Lnet/minecraft/world/item/crafting/CraftingRecipe;getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;": "Lnet/minecraft/world/item/crafting/CraftingRecipe;m_8043_(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;",
+        "mouseClicked": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelScreen;m_6375_(DDI)Z"
+      },
+      "net/liukrast/eg/mixin/FactoryPanelConnectionHandlerMixin": {
+        "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V": "Lnet/minecraft/world/entity/player/Player;m_5661_(Lnet/minecraft/network/chat/Component;Z)V",
+        "Lnet/minecraft/world/item/ItemStack;isEmpty()Z": "Lnet/minecraft/world/item/ItemStack;m_41619_()Z"
+      },
+      "net/liukrast/eg/mixin/FactoryPanelBehaviourMixin": {
+        "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;": "Lnet/minecraft/world/item/ItemStack;m_41720_()Lnet/minecraft/world/item/Item;",
+        "Lnet/minecraft/nbt/CompoundTag;putUUID(Ljava/lang/String;Ljava/util/UUID;)V": "Lnet/minecraft/nbt/CompoundTag;m_128362_(Ljava/lang/String;Ljava/util/UUID;)V",
+        "Lnet/minecraft/world/item/ItemStack;isEmpty()Z": "Lnet/minecraft/world/item/ItemStack;m_41619_()Z"
+      },
+      "net/liukrast/eg/mixin/PackageRepackageHelperMixin": {
+        "Lnet/minecraft/world/item/ItemStack;copyWithCount(I)Lnet/minecraft/world/item/ItemStack;": "Lnet/minecraft/world/item/ItemStack;m_255036_(I)Lnet/minecraft/world/item/ItemStack;"
+      },
+      "net/liukrast/eg/mixin/FactoryPanelBlockMixin": {
+        "Lnet/minecraft/world/entity/player/Player;displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V": "Lnet/minecraft/world/entity/player/Player;m_5661_(Lnet/minecraft/network/chat/Component;Z)V",
+        "canBeReplaced": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6864_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/context/BlockPlaceContext;)Z",
+        "Lnet/minecraft/world/level/Level;isClientSide()Z": "Lnet/minecraft/world/level/Level;m_5776_()Z",
+        "use": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6227_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;",
+        "getStateForPlacement": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_5573_(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;",
+        "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;popResource(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_49840_(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V",
+        "Lnet/minecraft/world/entity/player/Inventory;placeItemBackInInventory(Lnet/minecraft/world/item/ItemStack;)V": "Lnet/minecraft/world/entity/player/Inventory;m_150079_(Lnet/minecraft/world/item/ItemStack;)V",
+        "setPlacedBy": "Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock;m_6402_(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;)V"
+      }
+    }
+  }
+}

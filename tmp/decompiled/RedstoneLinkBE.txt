@@ -1,0 +1,370 @@
+﻿Compiled from "RedstoneLinkBlockEntity.java"
+public class com.simibubi.create.content.redstone.link.RedstoneLinkBlockEntity extends com.simibubi.create.foundation.blockEntity.SmartBlockEntity {
+  private boolean receivedSignalChanged;
+
+  private int receivedSignal;
+
+  private int transmittedSignal;
+
+  private com.simibubi.create.content.redstone.link.LinkBehaviour link;
+
+  private boolean transmitter;
+
+  public com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSupportBehaviour panelSupport;
+
+  public com.simibubi.create.content.redstone.link.RedstoneLinkBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?>, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #33                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       7: return
+
+  public void addBehaviours(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: new           #45                 // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour
+       5: dup
+       6: aload_0
+       7: aload_0
+       8: invokedynamic #64,  0             // InvokeDynamic #0:get:(Lcom/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity;)Ljava/util/function/Supplier;
+      13: aload_0
+      14: invokedynamic #69,  0             // InvokeDynamic #1:get:(Lcom/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity;)Ljava/util/function/Supplier;
+      19: aload_0
+      20: invokedynamic #79,  0             // InvokeDynamic #2:run:(Lcom/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity;)Ljava/lang/Runnable;
+      25: invokespecial #82                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour."<init>":(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/lang/Runnable;)V
+      28: dup_x1
+      29: putfield      #84                 // Field panelSupport:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;
+      32: invokeinterface #90,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      37: pop
+      38: return
+
+  public void addBehavioursDeferred(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+    Code:
+       0: aload_0
+       1: invokevirtual #96                 // Method createLink:()V
+       4: aload_1
+       5: aload_0
+       6: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+       9: invokeinterface #90,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      14: pop
+      15: return
+
+  protected void createLink();
+    Code:
+       0: invokedynamic #112,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #116                // Method com/simibubi/create/foundation/blockEntity/behaviour/ValueBoxTransform$Dual.makeSlots:(Ljava/util/function/Function;)Lorg/apache/commons/lang3/tuple/Pair;
+       8: astore_1
+       9: aload_0
+      10: aload_0
+      11: getfield      #118                // Field transmitter:Z
+      14: ifeq          31
+      17: aload_0
+      18: aload_1
+      19: aload_0
+      20: invokedynamic #128,  0            // InvokeDynamic #4:getAsInt:(Lcom/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity;)Ljava/util/function/IntSupplier;
+      25: invokestatic  #133                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.transmitter:(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Lorg/apache/commons/lang3/tuple/Pair;Ljava/util/function/IntSupplier;)Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      28: goto          42
+      31: aload_0
+      32: aload_1
+      33: aload_0
+      34: invokedynamic #145,  0            // InvokeDynamic #5:accept:(Lcom/simibubi/create/content/redstone/link/RedstoneLinkBlockEntity;)Ljava/util/function/IntConsumer;
+      39: invokestatic  #149                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.receiver:(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Lorg/apache/commons/lang3/tuple/Pair;Ljava/util/function/IntConsumer;)Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      42: putfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      45: return
+
+  public int getSignal();
+    Code:
+       0: aload_0
+       1: getfield      #154                // Field transmittedSignal:I
+       4: ireturn
+
+  public void setSignal(int);
+    Code:
+       0: aload_0
+       1: getfield      #157                // Field receivedSignal:I
+       4: iload_1
+       5: if_icmpeq     13
+       8: aload_0
+       9: iconst_1
+      10: putfield      #159                // Field receivedSignalChanged:Z
+      13: aload_0
+      14: iload_1
+      15: putfield      #157                // Field receivedSignal:I
+      18: return
+
+  public void transmit(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #154                // Field transmittedSignal:I
+       5: aload_0
+       6: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+       9: ifnull        19
+      12: aload_0
+      13: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      16: invokevirtual #164                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.notifySignalChange:()V
+      19: return
+
+  public void write(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_1
+       1: ldc           #170                // String Transmitter
+       3: aload_0
+       4: getfield      #118                // Field transmitter:Z
+       7: invokevirtual #176                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      10: aload_1
+      11: ldc           #178                // String Receive
+      13: aload_0
+      14: invokevirtual #181                // Method getReceivedSignal:()I
+      17: invokevirtual #185                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      20: aload_1
+      21: ldc           #187                // String ReceivedChanged
+      23: aload_0
+      24: getfield      #159                // Field receivedSignalChanged:Z
+      27: invokevirtual #176                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+      30: aload_1
+      31: ldc           #189                // String Transmit
+      33: aload_0
+      34: getfield      #154                // Field transmittedSignal:I
+      37: invokevirtual #185                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      40: aload_0
+      41: aload_1
+      42: iload_2
+      43: invokespecial #191                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.write:(Lnet/minecraft/nbt/CompoundTag;Z)V
+      46: return
+
+  protected void read(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #170                // String Transmitter
+       4: invokevirtual #197                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+       7: putfield      #118                // Field transmitter:Z
+      10: aload_0
+      11: aload_1
+      12: iload_2
+      13: invokespecial #199                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.read:(Lnet/minecraft/nbt/CompoundTag;Z)V
+      16: aload_0
+      17: aload_1
+      18: ldc           #178                // String Receive
+      20: invokevirtual #203                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      23: putfield      #157                // Field receivedSignal:I
+      26: aload_0
+      27: aload_1
+      28: ldc           #187                // String ReceivedChanged
+      30: invokevirtual #197                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+      33: putfield      #159                // Field receivedSignalChanged:Z
+      36: aload_0
+      37: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      40: ifnull        63
+      43: aload_0
+      44: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      47: getfield      #212                // Field net/minecraft/world/level/Level.isClientSide:Z
+      50: ifne          63
+      53: aload_0
+      54: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      57: getfield      #215                // Field com/simibubi/create/content/redstone/link/LinkBehaviour.newPosition:Z
+      60: ifne          73
+      63: aload_0
+      64: aload_1
+      65: ldc           #189                // String Transmit
+      67: invokevirtual #203                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      70: putfield      #154                // Field transmittedSignal:I
+      73: return
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokespecial #218                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.tick:()V
+       4: aload_0
+       5: invokevirtual #221                // Method isTransmitterBlock:()Ljava/lang/Boolean;
+       8: invokevirtual #227                // Method java/lang/Boolean.booleanValue:()Z
+      11: aload_0
+      12: getfield      #118                // Field transmitter:Z
+      15: if_icmpeq     61
+      18: aload_0
+      19: aload_0
+      20: invokevirtual #221                // Method isTransmitterBlock:()Ljava/lang/Boolean;
+      23: invokevirtual #227                // Method java/lang/Boolean.booleanValue:()Z
+      26: putfield      #118                // Field transmitter:Z
+      29: aload_0
+      30: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      33: astore_1
+      34: aload_0
+      35: getstatic     #231                // Field com/simibubi/create/content/redstone/link/LinkBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+      38: invokevirtual #235                // Method removeBehaviour:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)V
+      41: aload_0
+      42: invokevirtual #96                 // Method createLink:()V
+      45: aload_0
+      46: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      49: aload_1
+      50: invokevirtual #239                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.copyItemsFrom:(Lcom/simibubi/create/content/redstone/link/LinkBehaviour;)V
+      53: aload_0
+      54: aload_0
+      55: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      58: invokevirtual #243                // Method attachBehaviourLate:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;)V
+      61: aload_0
+      62: getfield      #118                // Field transmitter:Z
+      65: ifeq          69
+      68: return
+      69: aload_0
+      70: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      73: getfield      #212                // Field net/minecraft/world/level/Level.isClientSide:Z
+      76: ifeq          80
+      79: return
+      80: aload_0
+      81: invokevirtual #247                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      84: astore_1
+      85: getstatic     #253                // Field com/simibubi/create/AllBlocks.REDSTONE_LINK:Lcom/tterrag/registrate/util/entry/BlockEntry;
+      88: aload_1
+      89: invokevirtual #259                // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      92: ifne          96
+      95: return
+      96: aload_0
+      97: invokevirtual #181                // Method getReceivedSignal:()I
+     100: ifle          107
+     103: iconst_1
+     104: goto          108
+     107: iconst_0
+     108: aload_1
+     109: getstatic     #267                // Field com/simibubi/create/content/redstone/link/RedstoneLinkBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     112: invokevirtual #271                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     115: checkcast     #223                // class java/lang/Boolean
+     118: invokevirtual #227                // Method java/lang/Boolean.booleanValue:()Z
+     121: if_icmpeq     151
+     124: aload_0
+     125: iconst_1
+     126: putfield      #159                // Field receivedSignalChanged:Z
+     129: aload_0
+     130: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+     133: aload_0
+     134: getfield      #274                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+     137: aload_1
+     138: getstatic     #267                // Field com/simibubi/create/content/redstone/link/RedstoneLinkBlock.POWERED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     141: invokevirtual #278                // Method net/minecraft/world/level/block/state/BlockState.cycle:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Object;
+     144: checkcast     #261                // class net/minecraft/world/level/block/state/BlockState
+     147: invokevirtual #282                // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+     150: pop
+     151: aload_0
+     152: getfield      #159                // Field receivedSignalChanged:Z
+     155: ifeq          163
+     158: aload_0
+     159: aload_1
+     160: invokevirtual #286                // Method updateSelfAndAttached:(Lnet/minecraft/world/level/block/state/BlockState;)V
+     163: return
+
+  public void remove();
+    Code:
+       0: aload_0
+       1: invokespecial #291                // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.remove:()V
+       4: aload_0
+       5: aload_0
+       6: invokevirtual #247                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       9: invokevirtual #286                // Method updateSelfAndAttached:(Lnet/minecraft/world/level/block/state/BlockState;)V
+      12: return
+
+  public void updateSelfAndAttached(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: getstatic     #295                // Field com/simibubi/create/content/redstone/link/RedstoneLinkBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+       4: invokevirtual #271                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+       7: checkcast     #297                // class net/minecraft/core/Direction
+      10: invokevirtual #301                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+      13: astore_2
+      14: aload_0
+      15: getfield      #274                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      18: aload_2
+      19: invokevirtual #307                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      22: astore_3
+      23: aload_0
+      24: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      27: aload_0
+      28: getfield      #274                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      31: aload_0
+      32: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      35: aload_0
+      36: getfield      #274                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      39: invokevirtual #310                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      42: invokevirtual #314                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      45: invokevirtual #318                // Method net/minecraft/world/level/Level.blockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+      48: aload_0
+      49: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      52: aload_3
+      53: aload_0
+      54: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      57: aload_3
+      58: invokevirtual #310                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      61: invokevirtual #314                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      64: invokevirtual #318                // Method net/minecraft/world/level/Level.blockUpdated:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;)V
+      67: aload_0
+      68: iconst_0
+      69: putfield      #159                // Field receivedSignalChanged:Z
+      72: aload_0
+      73: getfield      #84                 // Field panelSupport:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;
+      76: invokevirtual #321                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.notifyPanels:()V
+      79: return
+
+  protected java.lang.Boolean isTransmitterBlock();
+    Code:
+       0: aload_0
+       1: invokevirtual #247                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       4: getstatic     #327                // Field com/simibubi/create/content/redstone/link/RedstoneLinkBlock.RECEIVER:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       7: invokevirtual #271                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+      10: checkcast     #223                // class java/lang/Boolean
+      13: invokevirtual #227                // Method java/lang/Boolean.booleanValue:()Z
+      16: ifne          23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: invokestatic  #331                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      27: areturn
+
+  public int getReceivedSignal();
+    Code:
+       0: aload_0
+       1: getfield      #157                // Field receivedSignal:I
+       4: ireturn
+
+  private void lambda$addBehaviours$2();
+    Code:
+       0: getstatic     #253                // Field com/simibubi/create/AllBlocks.REDSTONE_LINK:Lcom/tterrag/registrate/util/entry/BlockEntry;
+       3: invokevirtual #333                // Method com/tterrag/registrate/util/entry/BlockEntry.get:()Ljava/lang/Object;
+       6: checkcast     #263                // class com/simibubi/create/content/redstone/link/RedstoneLinkBlock
+       9: aload_0
+      10: invokevirtual #247                // Method getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      13: aload_0
+      14: getfield      #207                // Field level:Lnet/minecraft/world/level/Level;
+      17: aload_0
+      18: getfield      #274                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      21: invokevirtual #337                // Method com/simibubi/create/content/redstone/link/RedstoneLinkBlock.updateTransmittedSignal:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+      24: return
+
+  private java.lang.Boolean lambda$addBehaviours$1();
+    Code:
+       0: aload_0
+       1: getfield      #157                // Field receivedSignal:I
+       4: ifle          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: invokestatic  #331                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      15: areturn
+
+  private java.lang.Boolean lambda$addBehaviours$0();
+    Code:
+       0: aload_0
+       1: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+       4: ifnull        21
+       7: aload_0
+       8: getfield      #98                 // Field link:Lcom/simibubi/create/content/redstone/link/LinkBehaviour;
+      11: invokevirtual #340                // Method com/simibubi/create/content/redstone/link/LinkBehaviour.isListening:()Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: invokestatic  #331                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      25: areturn
+}

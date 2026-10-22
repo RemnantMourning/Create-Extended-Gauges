@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "create:display_link"
+    }
+  ],
+  "result": {
+    "item": "extra_gauges:display_collector"
+  }
+}

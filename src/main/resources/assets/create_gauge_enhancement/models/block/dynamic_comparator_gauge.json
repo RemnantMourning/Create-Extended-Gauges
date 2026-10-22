@@ -1,0 +1,7 @@
+{
+  "parent": "extra_gauges:block/template_gauge",
+  "textures": {
+    "particle": "create_gauge_enhancement:block/dynamic_comparator_panel",
+    "texture": "create_gauge_enhancement:block/dynamic_comparator_panel"
+  }
+}

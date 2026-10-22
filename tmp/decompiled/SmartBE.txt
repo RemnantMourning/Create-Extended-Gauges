@@ -1,0 +1,557 @@
+﻿Compiled from "SmartBlockEntity.java"
+public abstract class com.simibubi.create.foundation.blockEntity.SmartBlockEntity extends com.simibubi.create.foundation.blockEntity.CachedRenderBBBlockEntity implements com.simibubi.create.api.schematic.nbt.PartialSafeNBT,com.simibubi.create.foundation.utility.IInteractionChecker,com.simibubi.create.api.schematic.requirement.SpecialBlockEntityItemRequirement,net.createmod.ponder.api.VirtualBlockEntity {
+  private final java.util.Map<com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType<?>, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour> behaviours;
+
+  private boolean initialized;
+
+  private boolean firstNbtRead;
+
+  protected int lazyTickRate;
+
+  protected int lazyTickCounter;
+
+  private boolean chunkUnloaded;
+
+  private boolean virtualMode;
+
+  public com.simibubi.create.foundation.blockEntity.SmartBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?>, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #37                 // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       7: aload_0
+       8: new           #39                 // class it/unimi/dsi/fastutil/objects/Reference2ObjectArrayMap
+      11: dup
+      12: invokespecial #42                 // Method it/unimi/dsi/fastutil/objects/Reference2ObjectArrayMap."<init>":()V
+      15: putfield      #44                 // Field behaviours:Ljava/util/Map;
+      18: aload_0
+      19: iconst_0
+      20: putfield      #46                 // Field initialized:Z
+      23: aload_0
+      24: iconst_1
+      25: putfield      #48                 // Field firstNbtRead:Z
+      28: aload_0
+      29: bipush        10
+      31: invokevirtual #52                 // Method setLazyTickRate:(I)V
+      34: new           #54                 // class java/util/ArrayList
+      37: dup
+      38: invokespecial #55                 // Method java/util/ArrayList."<init>":()V
+      41: astore        4
+      43: aload_0
+      44: aload         4
+      46: invokevirtual #59                 // Method addBehaviours:(Ljava/util/List;)V
+      49: aload         4
+      51: aload_0
+      52: invokedynamic #78,  0             // InvokeDynamic #0:accept:(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;)Ljava/util/function/Consumer;
+      57: invokevirtual #82                 // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+      60: return
+
+  public abstract void addBehaviours(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+
+  public void addBehavioursDeferred(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+    Code:
+       0: return
+
+  public void initialize();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field firstNbtRead:Z
+       4: ifeq          33
+       7: aload_0
+       8: iconst_0
+       9: putfield      #48                 // Field firstNbtRead:Z
+      12: getstatic     #102                // Field net/minecraftforge/common/MinecraftForge.EVENT_BUS:Lnet/minecraftforge/eventbus/api/IEventBus;
+      15: new           #104                // class com/simibubi/create/api/event/BlockEntityBehaviourEvent
+      18: dup
+      19: aload_0
+      20: aload_0
+      21: getfield      #44                 // Field behaviours:Ljava/util/Map;
+      24: invokespecial #107                // Method com/simibubi/create/api/event/BlockEntityBehaviourEvent."<init>":(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Ljava/util/Map;)V
+      27: invokeinterface #113,  2          // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.post:(Lnet/minecraftforge/eventbus/api/Event;)Z
+      32: pop
+      33: aload_0
+      34: invokedynamic #121,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      39: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+      42: aload_0
+      43: invokevirtual #127                // Method lazyTick:()V
+      46: return
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field initialized:Z
+       4: ifne          23
+       7: aload_0
+       8: invokevirtual #132                // Method hasLevel:()Z
+      11: ifeq          23
+      14: aload_0
+      15: invokevirtual #133                // Method initialize:()V
+      18: aload_0
+      19: iconst_1
+      20: putfield      #46                 // Field initialized:Z
+      23: aload_0
+      24: dup
+      25: getfield      #135                // Field lazyTickCounter:I
+      28: dup_x1
+      29: iconst_1
+      30: isub
+      31: putfield      #135                // Field lazyTickCounter:I
+      34: ifgt          49
+      37: aload_0
+      38: aload_0
+      39: getfield      #137                // Field lazyTickRate:I
+      42: putfield      #135                // Field lazyTickCounter:I
+      45: aload_0
+      46: invokevirtual #127                // Method lazyTick:()V
+      49: aload_0
+      50: invokedynamic #141,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      55: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+      58: return
+
+  public void lazyTick();
+    Code:
+       0: return
+
+  protected void write(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #149                // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity.saveAdditional:(Lnet/minecraft/nbt/CompoundTag;)V
+       5: aload_0
+       6: aload_1
+       7: iload_2
+       8: invokedynamic #157,  0            // InvokeDynamic #3:accept:(Lnet/minecraft/nbt/CompoundTag;Z)Ljava/util/function/Consumer;
+      13: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+      16: return
+
+  public void writeSafe(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #149                // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity.saveAdditional:(Lnet/minecraft/nbt/CompoundTag;)V
+       5: aload_0
+       6: aload_1
+       7: invokedynamic #167,  0            // InvokeDynamic #4:accept:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/function/Consumer;
+      12: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+      15: return
+
+  protected void read(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field firstNbtRead:Z
+       4: ifeq          56
+       7: aload_0
+       8: iconst_0
+       9: putfield      #48                 // Field firstNbtRead:Z
+      12: new           #54                 // class java/util/ArrayList
+      15: dup
+      16: invokespecial #55                 // Method java/util/ArrayList."<init>":()V
+      19: astore_3
+      20: aload_0
+      21: aload_3
+      22: invokevirtual #170                // Method addBehavioursDeferred:(Ljava/util/List;)V
+      25: aload_3
+      26: aload_0
+      27: invokedynamic #175,  0            // InvokeDynamic #5:accept:(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;)Ljava/util/function/Consumer;
+      32: invokevirtual #82                 // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+      35: getstatic     #102                // Field net/minecraftforge/common/MinecraftForge.EVENT_BUS:Lnet/minecraftforge/eventbus/api/IEventBus;
+      38: new           #104                // class com/simibubi/create/api/event/BlockEntityBehaviourEvent
+      41: dup
+      42: aload_0
+      43: aload_0
+      44: getfield      #44                 // Field behaviours:Ljava/util/Map;
+      47: invokespecial #107                // Method com/simibubi/create/api/event/BlockEntityBehaviourEvent."<init>":(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Ljava/util/Map;)V
+      50: invokeinterface #113,  2          // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.post:(Lnet/minecraftforge/eventbus/api/Event;)Z
+      55: pop
+      56: aload_0
+      57: aload_1
+      58: invokespecial #178                // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity.load:(Lnet/minecraft/nbt/CompoundTag;)V
+      61: aload_0
+      62: aload_1
+      63: iload_2
+      64: invokedynamic #183,  0            // InvokeDynamic #6:accept:(Lnet/minecraft/nbt/CompoundTag;Z)Ljava/util/function/Consumer;
+      69: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+      72: return
+
+  public final void load(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokevirtual #185                // Method read:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: return
+
+  public void onChunkUnloaded();
+    Code:
+       0: aload_0
+       1: invokespecial #188                // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity.onChunkUnloaded:()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #190                // Field chunkUnloaded:Z
+       9: return
+
+  public final void setRemoved();
+    Code:
+       0: aload_0
+       1: invokespecial #193                // Method com/simibubi/create/foundation/blockEntity/CachedRenderBBBlockEntity.setRemoved:()V
+       4: aload_0
+       5: getfield      #190                // Field chunkUnloaded:Z
+       8: ifne          15
+      11: aload_0
+      12: invokevirtual #196                // Method remove:()V
+      15: aload_0
+      16: invokevirtual #199                // Method invalidate:()V
+      19: return
+
+  public void invalidate();
+    Code:
+       0: aload_0
+       1: invokedynamic #204,  0            // InvokeDynamic #7:accept:()Ljava/util/function/Consumer;
+       6: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+       9: return
+
+  public void remove();
+    Code:
+       0: return
+
+  public void destroy();
+    Code:
+       0: aload_0
+       1: invokedynamic #209,  0            // InvokeDynamic #8:accept:()Ljava/util/function/Consumer;
+       6: invokevirtual #124                // Method forEachBehaviour:(Ljava/util/function/Consumer;)V
+       9: return
+
+  public final void saveAdditional(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokevirtual #211                // Method write:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: return
+
+  public final void readClient(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_1
+       3: invokevirtual #185                // Method read:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: return
+
+  public final net.minecraft.nbt.CompoundTag writeClient(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_1
+       3: invokevirtual #211                // Method write:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: aload_1
+       7: areturn
+
+  public <T extends com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour> T getBehaviour(com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType<T>);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #223,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #115                // class com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+      13: areturn
+
+  public void forEachBehaviour(java.util.function.Consumer<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+    Code:
+       0: aload_0
+       1: invokevirtual #231                // Method getAllBehaviours:()Ljava/util/Collection;
+       4: aload_1
+       5: invokeinterface #234,  2          // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+      10: return
+
+  public java.util.Collection<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour> getAllBehaviours();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: invokeinterface #240,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: areturn
+
+  public void attachBehaviourLate(com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: aload_1
+       5: invokevirtual #246                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.getType:()Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       8: aload_1
+       9: invokeinterface #250,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      14: pop
+      15: aload_1
+      16: aload_0
+      17: putfield      #253                // Field com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.blockEntity:Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+      20: aload_1
+      21: invokevirtual #117                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.initialize:()V
+      24: return
+
+  public com.simibubi.create.content.schematics.requirement.ItemRequirement getRequiredItems(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #231                // Method getAllBehaviours:()Ljava/util/Collection;
+       4: invokeinterface #260,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+       9: getstatic     #266                // Field com/simibubi/create/content/schematics/requirement/ItemRequirement.NONE:Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;
+      12: invokedynamic #277,  0            // InvokeDynamic #9:apply:()Ljava/util/function/BiFunction;
+      17: invokedynamic #286,  0            // InvokeDynamic #10:apply:()Ljava/util/function/BinaryOperator;
+      22: invokeinterface #292,  4          // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BiFunction;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+      27: checkcast     #262                // class com/simibubi/create/content/schematics/requirement/ItemRequirement
+      30: areturn
+
+  public void removeBehaviour(com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType<?>);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #297,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #115                // class com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+      13: astore_2
+      14: aload_2
+      15: ifnull        22
+      18: aload_2
+      19: invokevirtual #202                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.unload:()V
+      22: return
+
+  public void setLazyTickRate(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #137                // Field lazyTickRate:I
+       5: aload_0
+       6: iload_1
+       7: putfield      #135                // Field lazyTickCounter:I
+      10: return
+
+  public void markVirtual();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #302                // Field virtualMode:Z
+       5: return
+
+  public boolean isVirtual();
+    Code:
+       0: aload_0
+       1: getfield      #302                // Field virtualMode:Z
+       4: ireturn
+
+  public boolean isChunkUnloaded();
+    Code:
+       0: aload_0
+       1: getfield      #190                // Field chunkUnloaded:Z
+       4: ireturn
+
+  public boolean canPlayerUse(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: getfield      #311                // Field level:Lnet/minecraft/world/level/Level;
+       4: ifnull        22
+       7: aload_0
+       8: getfield      #311                // Field level:Lnet/minecraft/world/level/Level;
+      11: aload_0
+      12: getfield      #314                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      15: invokevirtual #320                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      18: aload_0
+      19: if_acmpeq     24
+      22: iconst_0
+      23: ireturn
+      24: aload_1
+      25: aload_0
+      26: getfield      #314                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      29: invokevirtual #326                // Method net/minecraft/core/BlockPos.getX:()I
+      32: i2d
+      33: ldc2_w        #327                // double 0.5d
+      36: dadd
+      37: aload_0
+      38: getfield      #314                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      41: invokevirtual #331                // Method net/minecraft/core/BlockPos.getY:()I
+      44: i2d
+      45: ldc2_w        #327                // double 0.5d
+      48: dadd
+      49: aload_0
+      50: getfield      #314                // Field worldPosition:Lnet/minecraft/core/BlockPos;
+      53: invokevirtual #334                // Method net/minecraft/core/BlockPos.getZ:()I
+      56: i2d
+      57: ldc2_w        #327                // double 0.5d
+      60: dadd
+      61: invokevirtual #340                // Method net/minecraft/world/entity/player/Player.distanceToSqr:(DDD)D
+      64: ldc2_w        #341                // double 64.0d
+      67: dcmpg
+      68: ifgt          75
+      71: iconst_1
+      72: goto          76
+      75: iconst_0
+      76: ireturn
+
+  public void sendToMenu(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #350                // Method getBlockPos:()Lnet/minecraft/core/BlockPos;
+       5: invokevirtual #356                // Method net/minecraft/network/FriendlyByteBuf.writeBlockPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/network/FriendlyByteBuf;
+       8: pop
+       9: aload_1
+      10: aload_0
+      11: invokevirtual #360                // Method getUpdateTag:()Lnet/minecraft/nbt/CompoundTag;
+      14: invokevirtual #364                // Method net/minecraft/network/FriendlyByteBuf.writeNbt:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/network/FriendlyByteBuf;
+      17: pop
+      18: return
+
+  public void refreshBlockState();
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokevirtual #370                // Method getLevel:()Lnet/minecraft/world/level/Level;
+       5: aload_0
+       6: invokevirtual #350                // Method getBlockPos:()Lnet/minecraft/core/BlockPos;
+       9: invokevirtual #374                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      12: invokevirtual #378                // Method setBlockState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+      15: return
+
+  protected boolean isItemHandlerCap(net.minecraftforge.common.capabilities.Capability<?>);
+    Code:
+       0: aload_1
+       1: getstatic     #388                // Field net/minecraftforge/common/capabilities/ForgeCapabilities.ITEM_HANDLER:Lnet/minecraftforge/common/capabilities/Capability;
+       4: if_acmpne     11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  protected boolean isFluidHandlerCap(net.minecraftforge.common.capabilities.Capability<?>);
+    Code:
+       0: aload_1
+       1: getstatic     #393                // Field net/minecraftforge/common/capabilities/ForgeCapabilities.FLUID_HANDLER:Lnet/minecraftforge/common/capabilities/Capability;
+       4: if_acmpne     11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public void registerAwardables(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>, com.simibubi.create.foundation.advancement.CreateAdvancement...);
+    Code:
+       0: aload_1
+       1: invokeinterface #403,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       6: astore_3
+       7: aload_3
+       8: invokeinterface #408,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          52
+      16: aload_3
+      17: invokeinterface #412,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #115                // class com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour
+      25: astore        4
+      27: aload         4
+      29: instanceof    #414                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      32: ifeq          49
+      35: aload         4
+      37: checkcast     #414                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      40: astore        5
+      42: aload         5
+      44: aload_2
+      45: invokevirtual #418                // Method com/simibubi/create/foundation/advancement/AdvancementBehaviour.add:([Lcom/simibubi/create/foundation/advancement/CreateAdvancement;)V
+      48: return
+      49: goto          7
+      52: aload_1
+      53: new           #414                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      56: dup
+      57: aload_0
+      58: aload_2
+      59: invokespecial #421                // Method com/simibubi/create/foundation/advancement/AdvancementBehaviour."<init>":(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;[Lcom/simibubi/create/foundation/advancement/CreateAdvancement;)V
+      62: invokeinterface #424,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      67: pop
+      68: return
+
+  public void award(com.simibubi.create.foundation.advancement.CreateAdvancement);
+    Code:
+       0: aload_0
+       1: getstatic     #433                // Field com/simibubi/create/foundation/advancement/AdvancementBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       4: invokevirtual #435                // Method getBehaviour:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+       7: checkcast     #414                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      10: astore_2
+      11: aload_2
+      12: ifnull        20
+      15: aload_2
+      16: aload_1
+      17: invokevirtual #438                // Method com/simibubi/create/foundation/advancement/AdvancementBehaviour.awardPlayer:(Lcom/simibubi/create/foundation/advancement/CreateAdvancement;)V
+      20: return
+
+  public void awardIfNear(com.simibubi.create.foundation.advancement.CreateAdvancement, int);
+    Code:
+       0: aload_0
+       1: getstatic     #433                // Field com/simibubi/create/foundation/advancement/AdvancementBehaviour.TYPE:Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       4: invokevirtual #435                // Method getBehaviour:(Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;)Lcom/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour;
+       7: checkcast     #414                // class com/simibubi/create/foundation/advancement/AdvancementBehaviour
+      10: astore_3
+      11: aload_3
+      12: ifnull        21
+      15: aload_3
+      16: aload_1
+      17: iload_2
+      18: invokevirtual #445                // Method com/simibubi/create/foundation/advancement/AdvancementBehaviour.awardPlayerIfNear:(Lcom/simibubi/create/foundation/advancement/CreateAdvancement;I)V
+      21: return
+
+  private static com.simibubi.create.content.schematics.requirement.ItemRequirement lambda$getRequiredItems$6(com.simibubi.create.content.schematics.requirement.ItemRequirement, com.simibubi.create.content.schematics.requirement.ItemRequirement);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #451                // Method com/simibubi/create/content/schematics/requirement/ItemRequirement.union:(Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;)Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;
+       5: areturn
+
+  private static com.simibubi.create.content.schematics.requirement.ItemRequirement lambda$getRequiredItems$5(com.simibubi.create.content.schematics.requirement.ItemRequirement, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #455                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.getRequiredItems:()Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;
+       5: invokevirtual #451                // Method com/simibubi/create/content/schematics/requirement/ItemRequirement.union:(Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;)Lcom/simibubi/create/content/schematics/requirement/ItemRequirement;
+       8: areturn
+
+  private static void lambda$read$4(net.minecraft.nbt.CompoundTag, boolean, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: iload_1
+       3: invokevirtual #457                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.read:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: return
+
+  private void lambda$read$3(com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: aload_1
+       5: invokevirtual #246                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.getType:()Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       8: aload_1
+       9: invokeinterface #250,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      14: pop
+      15: return
+
+  private static void lambda$writeSafe$2(net.minecraft.nbt.CompoundTag, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_1
+       1: invokevirtual #460                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.isSafeNBT:()Z
+       4: ifeq          12
+       7: aload_1
+       8: aload_0
+       9: invokevirtual #462                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.writeSafe:(Lnet/minecraft/nbt/CompoundTag;)V
+      12: return
+
+  private static void lambda$write$1(net.minecraft.nbt.CompoundTag, boolean, com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: iload_1
+       3: invokevirtual #463                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.write:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: return
+
+  private void lambda$new$0(com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field behaviours:Ljava/util/Map;
+       4: aload_1
+       5: invokevirtual #246                // Method com/simibubi/create/foundation/blockEntity/behaviour/BlockEntityBehaviour.getType:()Lcom/simibubi/create/foundation/blockEntity/behaviour/BehaviourType;
+       8: aload_1
+       9: invokeinterface #250,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      14: pop
+      15: return
+}

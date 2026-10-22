@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/factory_gauge/item",
+  "textures": {
+    "0": "create_gauge_enhancement:block/dynamic_comparator_panel",
+    "particle": "create_gauge_enhancement:block/dynamic_comparator_panel"
+  }
+}

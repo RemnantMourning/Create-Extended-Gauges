@@ -1,0 +1,16 @@
+﻿Compiled from "DisplayCollectorBlock.java"
+public class net.liukrast.eg.content.logistics.DisplayCollectorBlock extends com.simibubi.create.content.redstone.displayLink.DisplayLinkBlock {
+  public net.liukrast.eg.content.logistics.DisplayCollectorBlock(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #15                 // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlock."<init>":(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+       5: return
+
+  public net.minecraft.world.level.block.entity.BlockEntityType<? extends net.liukrast.eg.content.logistics.DisplayCollectorBlockEntity> getBlockEntityType();
+    Code:
+       0: getstatic     #28                 // Field net/liukrast/eg/registry/EGBlockEntityTypes.DISPLAY_COLLECTOR:Lnet/minecraftforge/registries/RegistryObject;
+       3: invokevirtual #34                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+       6: checkcast     #36                 // class net/minecraft/world/level/block/entity/BlockEntityType
+       9: areturn
+}

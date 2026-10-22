@@ -1,0 +1,115 @@
+﻿Compiled from "EGExtraPanelConnections.java"
+public class net.liukrast.eg.registry.EGExtraPanelConnections {
+  private net.liukrast.eg.registry.EGExtraPanelConnections();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register();
+    Code:
+       0: iconst_2
+       1: anewarray     #19                 // class net/minecraft/world/level/block/Block
+       4: dup
+       5: iconst_0
+       6: getstatic     #25                 // Field net/minecraft/world/level/block/Blocks.f_50164_:Lnet/minecraft/world/level/block/Block;
+       9: aastore
+      10: dup
+      11: iconst_1
+      12: getstatic     #31                 // Field com/simibubi/create/AllBlocks.ANALOG_LEVER:Lcom/tterrag/registrate/util/entry/BlockEntry;
+      15: invokevirtual #37                 // Method com/tterrag/registrate/util/entry/BlockEntry.get:()Ljava/lang/Object;
+      18: checkcast     #19                 // class net/minecraft/world/level/block/Block
+      21: aastore
+      22: astore_0
+      23: getstatic     #43                 // Field net/liukrast/eg/registry/EGPanelConnections.REDSTONE:Lnet/minecraftforge/registries/RegistryObject;
+      26: invokevirtual #46                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      29: checkcast     #48                 // class net/liukrast/eg/api/logistics/board/PanelConnection
+      32: invokedynamic #65,  0             // InvokeDynamic #0:invalidate:()Lnet/liukrast/eg/api/util/ConnectionExtra;
+      37: aload_0
+      38: invokevirtual #69                 // Method net/liukrast/eg/api/logistics/board/PanelConnection.addListener:(Lnet/liukrast/eg/api/util/ConnectionExtra;[Lnet/minecraft/world/level/block/Block;)V
+      41: getstatic     #72                 // Field net/liukrast/eg/registry/EGPanelConnections.INTEGER:Lnet/minecraftforge/registries/RegistryObject;
+      44: invokevirtual #46                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      47: checkcast     #48                 // class net/liukrast/eg/api/logistics/board/PanelConnection
+      50: invokedynamic #77,  0             // InvokeDynamic #1:invalidate:()Lnet/liukrast/eg/api/util/ConnectionExtra;
+      55: aload_0
+      56: invokevirtual #69                 // Method net/liukrast/eg/api/logistics/board/PanelConnection.addListener:(Lnet/liukrast/eg/api/util/ConnectionExtra;[Lnet/minecraft/world/level/block/Block;)V
+      59: getstatic     #80                 // Field net/liukrast/eg/registry/EGPanelConnections.STRING:Lnet/minecraftforge/registries/RegistryObject;
+      62: invokevirtual #46                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      65: checkcast     #48                 // class net/liukrast/eg/api/logistics/board/PanelConnection
+      68: invokedynamic #85,  0             // InvokeDynamic #2:invalidate:()Lnet/liukrast/eg/api/util/ConnectionExtra;
+      73: getstatic     #91                 // Field net/minecraft/core/registries/BuiltInRegistries.f_256975_:Lnet/minecraft/core/DefaultedRegistry;
+      76: invokeinterface #97,  1           // InterfaceMethod net/minecraft/core/DefaultedRegistry.m_123024_:()Ljava/util/stream/Stream;
+      81: invokedynamic #109,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+      86: invokeinterface #115,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      91: invokedynamic #127,  0            // InvokeDynamic #4:apply:()Ljava/util/function/IntFunction;
+      96: invokeinterface #131,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+     101: checkcast     #133                // class "[Lnet/minecraft/world/level/block/Block;"
+     104: invokevirtual #69                 // Method net/liukrast/eg/api/logistics/board/PanelConnection.addListener:(Lnet/liukrast/eg/api/util/ConnectionExtra;[Lnet/minecraft/world/level/block/Block;)V
+     107: return
+
+  private static net.minecraft.world.level.block.Block[] lambda$register$5(int);
+    Code:
+       0: iload_0
+       1: anewarray     #19                 // class net/minecraft/world/level/block/Block
+       4: areturn
+
+  private static boolean lambda$register$4(net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: instanceof    #138                // class net/minecraft/world/level/block/WallSignBlock
+       4: ireturn
+
+  private static java.util.Optional lambda$register$3(net.minecraft.world.level.Level, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_3
+       1: instanceof    #141                // class net/minecraft/world/level/block/entity/SignBlockEntity
+       4: ifeq          16
+       7: aload_3
+       8: checkcast     #141                // class net/minecraft/world/level/block/entity/SignBlockEntity
+      11: astore        4
+      13: goto          20
+      16: invokestatic  #147                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      19: areturn
+      20: ldc           #149                // String
+      22: aload         4
+      24: invokevirtual #153                // Method net/minecraft/world/level/block/entity/SignBlockEntity.m_277142_:()Lnet/minecraft/world/level/block/entity/SignText;
+      27: iconst_0
+      28: invokevirtual #159                // Method net/minecraft/world/level/block/entity/SignText.m_276945_:(Z)[Lnet/minecraft/network/chat/Component;
+      31: invokestatic  #165                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+      34: invokedynamic #179,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      39: invokeinterface #183,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      44: invokedynamic #190,  0            // InvokeDynamic #6:apply:()Ljava/util/function/IntFunction;
+      49: invokeinterface #131,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+      54: checkcast     #192                // class "[Ljava/lang/CharSequence;"
+      57: invokestatic  #198                // Method java/lang/String.join:(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;
+      60: invokestatic  #202                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      63: areturn
+
+  private static java.lang.String[] lambda$register$2(int);
+    Code:
+       0: iload_0
+       1: anewarray     #194                // class java/lang/String
+       4: areturn
+
+  private static java.util.Optional lambda$register$1(net.minecraft.world.level.Level, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: aload_2
+       3: getstatic     #218                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+       6: invokevirtual #224                // Method net/minecraft/world/level/block/state/BlockState.m_60746_:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)I
+       9: invokestatic  #230                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokestatic  #202                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      15: areturn
+
+  private static java.util.Optional lambda$register$0(net.minecraft.world.level.Level, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: aload_2
+       3: getstatic     #218                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+       6: invokevirtual #224                // Method net/minecraft/world/level/block/state/BlockState.m_60746_:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)I
+       9: invokestatic  #230                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokestatic  #202                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      15: areturn
+}

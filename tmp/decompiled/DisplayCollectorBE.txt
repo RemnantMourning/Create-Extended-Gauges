@@ -1,0 +1,244 @@
+﻿Compiled from "DisplayCollectorBlockEntity.java"
+public class net.liukrast.eg.content.logistics.DisplayCollectorBlockEntity extends com.simibubi.create.content.redstone.displayLink.DisplayLinkBlockEntity {
+  private net.minecraft.network.chat.Component component;
+
+  public net.liukrast.eg.content.logistics.DisplayCollectorBlockEntity(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #25                 // Field net/liukrast/eg/registry/EGBlockEntityTypes.DISPLAY_COLLECTOR:Lnet/minecraftforge/registries/RegistryObject;
+       4: invokevirtual #31                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+       7: checkcast     #33                 // class net/minecraft/world/level/block/entity/BlockEntityType
+      10: aload_1
+      11: aload_2
+      12: invokespecial #36                 // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      15: return
+
+  public void addBehaviours(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #47                 // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity.addBehaviours:(Ljava/util/List;)V
+       5: aload_1
+       6: aload_0
+       7: new           #9                  // class net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour
+      10: dup
+      11: invokedynamic #66,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: aload_0
+      17: invokedynamic #76,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      22: invokedynamic #81,  0             // InvokeDynamic #2:get:()Ljava/util/function/Supplier;
+      27: invokedynamic #91,  0             // InvokeDynamic #3:run:()Ljava/lang/Runnable;
+      32: invokespecial #94                 // Method net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour."<init>":(Ljava/util/function/Function;Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/lang/Runnable;)V
+      35: dup_x1
+      36: putfield      #98                 // Field factoryPanelSupport:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;
+      39: invokeinterface #104,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      44: pop
+      45: return
+
+  protected void read(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #111                // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity.read:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: aload_1
+       7: ldc           #113                // String text
+       9: invokevirtual #119                // Method net/minecraft/nbt/CompoundTag.m_128441_:(Ljava/lang/String;)Z
+      12: ifne          16
+      15: return
+      16: getstatic     #125                // Field net/minecraft/util/ExtraCodecs.f_276686_:Lcom/mojang/serialization/Codec;
+      19: getstatic     #131                // Field net/minecraft/nbt/NbtOps.f_128958_:Lnet/minecraft/nbt/NbtOps;
+      22: aload_1
+      23: ldc           #113                // String text
+      25: invokevirtual #135                // Method net/minecraft/nbt/CompoundTag.m_128423_:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+      28: invokeinterface #141,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      33: getstatic     #147                // Field net/liukrast/eg/EGConstants.LOGGER:Lorg/slf4j/Logger;
+      36: dup
+      37: invokestatic  #152                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      40: pop
+      41: invokedynamic #166,  0            // InvokeDynamic #4:accept:(Lorg/slf4j/Logger;)Ljava/util/function/Consumer;
+      46: invokevirtual #172                // Method com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+      49: aload_0
+      50: invokedynamic #181,  0            // InvokeDynamic #5:accept:(Lnet/liukrast/eg/content/logistics/DisplayCollectorBlockEntity;)Ljava/util/function/Consumer;
+      55: invokevirtual #187                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      58: return
+
+  protected void write(net.minecraft.nbt.CompoundTag, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #194                // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity.write:(Lnet/minecraft/nbt/CompoundTag;Z)V
+       6: aload_0
+       7: getfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+      10: ifnull        53
+      13: getstatic     #125                // Field net/minecraft/util/ExtraCodecs.f_276686_:Lcom/mojang/serialization/Codec;
+      16: getstatic     #131                // Field net/minecraft/nbt/NbtOps.f_128958_:Lnet/minecraft/nbt/NbtOps;
+      19: aload_0
+      20: getfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+      23: invokeinterface #199,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      28: getstatic     #147                // Field net/liukrast/eg/EGConstants.LOGGER:Lorg/slf4j/Logger;
+      31: dup
+      32: invokestatic  #152                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      35: pop
+      36: invokedynamic #166,  0            // InvokeDynamic #4:accept:(Lorg/slf4j/Logger;)Ljava/util/function/Consumer;
+      41: invokevirtual #172                // Method com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+      44: aload_1
+      45: invokedynamic #209,  0            // InvokeDynamic #6:accept:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/function/Consumer;
+      50: invokevirtual #187                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      53: return
+
+  public net.minecraft.network.chat.Component getComponent();
+    Code:
+       0: aload_0
+       1: getfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+       4: ifnonnull     13
+       7: invokestatic  #217                // InterfaceMethod net/minecraft/network/chat/Component.m_237119_:()Lnet/minecraft/network/chat/MutableComponent;
+      10: goto          17
+      13: aload_0
+      14: getfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+      17: areturn
+
+  public void setComponent(net.minecraft.network.chat.Component);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+       5: aload_0
+       6: getfield      #98                 // Field factoryPanelSupport:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;
+       9: invokevirtual #223                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.notifyPanels:()V
+      12: return
+
+  public net.minecraft.core.BlockPos getSourcePosition();
+    Code:
+       0: aload_0
+       1: getfield      #228                // Field f_58858_:Lnet/minecraft/core/BlockPos;
+       4: aload_0
+       5: getfield      #231                // Field targetOffset:Lnet/minecraft/core/BlockPos;
+       8: invokevirtual #237                // Method net/minecraft/core/BlockPos.m_121955_:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      11: areturn
+
+  public net.minecraft.core.BlockPos getTargetPosition();
+    Code:
+       0: aload_0
+       1: getfield      #98                 // Field factoryPanelSupport:Lcom/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour;
+       4: invokevirtual #242                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour.getLinkedPanels:()Ljava/util/List;
+       7: invokeinterface #246,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      12: astore_1
+      13: aload_1
+      14: invokeinterface #252,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      19: ifeq          37
+      22: aload_1
+      23: invokeinterface #255,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      28: checkcast     #257                // class com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition
+      31: astore_2
+      32: aload_2
+      33: invokevirtual #259                // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.pos:()Lnet/minecraft/core/BlockPos;
+      36: areturn
+      37: aload_0
+      38: getfield      #228                // Field f_58858_:Lnet/minecraft/core/BlockPos;
+      41: aload_0
+      42: invokevirtual #263                // Method getDirection:()Lnet/minecraft/core/Direction;
+      45: invokevirtual #267                // Method net/minecraft/core/BlockPos.m_121945_:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      48: areturn
+
+  public void onLoad();
+    Code:
+       0: aload_0
+       1: invokespecial #272                // Method com/simibubi/create/content/redstone/displayLink/DisplayLinkBlockEntity.onLoad:()V
+       4: aload_0
+       5: getfield      #276                // Field f_58857_:Lnet/minecraft/world/level/Level;
+       8: ifnonnull     12
+      11: return
+      12: aload_0
+      13: getfield      #276                // Field f_58857_:Lnet/minecraft/world/level/Level;
+      16: aload_0
+      17: invokevirtual #278                // Method getSourcePosition:()Lnet/minecraft/core/BlockPos;
+      20: invokevirtual #284                // Method net/minecraft/world/level/Level.m_7702_:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      23: astore_1
+      24: aload_1
+      25: instanceof    #286                // class net/liukrast/eg/api/util/DCFinder
+      28: ifeq          39
+      31: aload_1
+      32: checkcast     #286                // class net/liukrast/eg/api/util/DCFinder
+      35: astore_2
+      36: goto          40
+      39: return
+      40: aload_2
+      41: invokeinterface #292,  1          // InterfaceMethod net/liukrast/eg/api/util/DCFinder.extra_gauges$targetingDisplayCollectors:()Ljava/util/Set;
+      46: astore_3
+      47: aload_3
+      48: aload_0
+      49: invokevirtual #295                // Method m_58899_:()Lnet/minecraft/core/BlockPos;
+      52: invokeinterface #300,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      57: ifeq          61
+      60: return
+      61: aload_3
+      62: aload_0
+      63: invokevirtual #295                // Method m_58899_:()Lnet/minecraft/core/BlockPos;
+      66: invokeinterface #301,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      71: pop
+      72: aload_1
+      73: invokevirtual #304                // Method net/minecraft/world/level/block/entity/BlockEntity.m_6596_:()V
+      76: return
+
+  private static void lambda$write$5(net.minecraft.nbt.CompoundTag, net.minecraft.nbt.Tag);
+    Code:
+       0: aload_0
+       1: ldc           #113                // String text
+       3: aload_1
+       4: invokevirtual #315                // Method net/minecraft/nbt/CompoundTag.m_128365_:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+       7: pop
+       8: return
+
+  private void lambda$read$4(net.minecraft.network.chat.Component);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #196                // Field component:Lnet/minecraft/network/chat/Component;
+       5: return
+
+  private static void lambda$addBehaviours$3();
+    Code:
+       0: return
+
+  private static java.lang.Boolean lambda$addBehaviours$2();
+    Code:
+       0: iconst_0
+       1: invokestatic  #323                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  private static java.lang.Boolean lambda$addBehaviours$1();
+    Code:
+       0: iconst_1
+       1: invokestatic  #323                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  private static net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour$Line lambda$addBehaviours$0(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: aload_0
+       1: instanceof    #325                // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+       4: ifeq          28
+       7: aload_0
+       8: checkcast     #325                // class net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour
+      11: astore_2
+      12: aload_2
+      13: getstatic     #330                // Field net/liukrast/eg/registry/EGPanelConnections.STRING:Lnet/minecraftforge/registries/RegistryObject;
+      16: invokevirtual #31                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      19: checkcast     #332                // class net/liukrast/eg/api/logistics/board/PanelConnection
+      22: invokevirtual #336                // Method net/liukrast/eg/api/logistics/board/AbstractPanelBehaviour.hasConnection:(Lnet/liukrast/eg/api/logistics/board/PanelConnection;)Z
+      25: ifeq          32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: istore_1
+      34: new           #7                  // class net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line
+      37: dup
+      38: iload_1
+      39: ifeq          46
+      42: iconst_m1
+      43: goto          49
+      46: ldc_w         #339                // int 8947864
+      49: iconst_1
+      50: invokespecial #342                // Method net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line."<init>":(IZ)V
+      53: areturn
+}

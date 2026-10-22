@@ -62,6 +62,21 @@ repositories {
         }
     }
     maven {
+        url = "https://maven.createmod.net"
+        content {
+            includeGroup("com.simibubi.create")
+            includeGroup("net.createmod.ponder")
+            includeGroup("dev.engine-room.flywheel")
+        }
+    }
+    maven {
+        name = 'LiukRast'
+        url = 'https://maven.liukrast.net/'
+        content {
+            includeGroup('net.liukrast')
+        }
+    }
+    maven {
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.tterrag.registrate")
@@ -102,6 +117,18 @@ dependencies {
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:$project.mixinextras_version"))
     implementation(include("io.github.llamalad7:mixinextras-forge:$project.mixinextras_version"))
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
+
+    // Create (机械动力)
+    modImplementation("com.simibubi.create:create-${project.minecraft_version}:${project.create_version}:slim") { transitive = false }
+    modImplementation("net.createmod.ponder:Ponder-Forge-${project.minecraft_version}:${project.ponder_version}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${project.minecraft_version}:${project.flywheel_version}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-forge-${project.minecraft_version}:${project.flywheel_version}")
+    modImplementation("com.tterrag.registrate:Registrate:${project.registrate_version}")
+
+    // Create: Extra Gauges (更多仪表)
+    modImplementation("net.liukrast:extra_gauges-${project.minecraft_version}:${project.extra_gauges_version}") {
+        transitive = false
+    }
 
     // 辅助模组
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-forge-api:$project.jei_version") { transitive = false }

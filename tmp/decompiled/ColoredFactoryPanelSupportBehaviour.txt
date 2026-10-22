@@ -1,0 +1,26 @@
+﻿Compiled from "ColoredFactoryPanelSupportBehaviour.java"
+public class net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour extends com.simibubi.create.content.logistics.factoryBoard.FactoryPanelSupportBehaviour {
+  private final java.util.function.Function<com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour$Line> colorProvider;
+
+  public net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour(java.util.function.Function<com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour, net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour$Line>, com.simibubi.create.foundation.blockEntity.SmartBlockEntity, java.util.function.Supplier<java.lang.Boolean>, java.util.function.Supplier<java.lang.Boolean>, java.lang.Runnable);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: invokespecial #17                 // Method com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSupportBehaviour."<init>":(Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/lang/Runnable;)V
+      10: aload_0
+      11: aload_1
+      12: putfield      #19                 // Field colorProvider:Ljava/util/function/Function;
+      15: return
+
+  public net.liukrast.eg.api.logistics.ColoredFactoryPanelSupportBehaviour$Line getColor(com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field colorProvider:Ljava/util/function/Function;
+       4: aload_1
+       5: invokeinterface #37,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #7                  // class net/liukrast/eg/api/logistics/ColoredFactoryPanelSupportBehaviour$Line
+      13: areturn
+}
